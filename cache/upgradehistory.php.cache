@@ -1,0 +1,122 @@
+<tr align="center">
+    <td height="30px" style="width:auto;">Dongle FW Upgrade</td>
+    <td align="left" style="padding:8px"> USER2 </td>
+    <td align="left">2023-04-13 10:36:01</td>
+    <td>2023-04-13 10:36:01</td>
+    <td>2.0.0.2010</td>
+    <td></td>
+    <td style="width:auto">successful </td>
+</tr>
+<tr align="center">
+    <td height="30px" style="width:auto;">Dongle FW Upgrade</td>
+    <td align="left" style="padding:8px"> USER2 </td>
+    <td align="left">2023-04-13 10:36:08</td>
+    <td>2023-04-13 10:36:08</td>
+    <td>2.0.0.2010</td>
+    <td></td>
+    <td style="width:auto">successful </td>
+</tr>
+<tr align="center">
+    <td height="30px" style="width:auto;">Dongle FW Upgrade</td>
+    <td align="left" style="padding:8px"> ADMIN </td>
+    <td align="left">2023-04-13 14:10:00</td>
+    <td>2023-04-13 14:10:00</td>
+    <td>2.0.0.2010</td>
+    <td></td>
+    <td style="width:auto">successful </td>
+</tr>
+<tr align="center">
+    <td height="30px" style="width:auto;">Dongle FW Upgrade</td>
+    <td align="left" style="padding:8px"> USER15 </td>
+    <td align="left">2023-04-13 14:49:04</td>
+    <td>2023-04-13 14:49:04</td>
+    <td>2.0.0.2010</td>
+    <td></td>
+    <td style="width:auto">successful </td>
+</tr>
+<tr align="center">
+    <td height="30px" style="width:auto;">Dongle FW Upgrade</td>
+    <td align="left" style="padding:8px"> USER3 </td>
+    <td align="left">2023-04-17 13:56:50</td>
+    <td>2023-04-17 13:56:50</td>
+    <td>2.0.0.2010</td>
+    <td></td>
+    <td style="width:auto">successful </td>
+</tr>
+<tr align="center">
+    <td height="30px" style="width:auto;">Dongle FW Upgrade</td>
+    <td align="left" style="padding:8px"> USER3 </td>
+    <td align="left">2023-04-17 13:56:51</td>
+    <td>2023-04-17 13:56:51</td>
+    <td>2.0.0.2010</td>
+    <td></td>
+    <td style="width:auto">successful </td>
+</tr>
+<tr align="center">
+    <td height="30px" style="width:auto;">Dongle FW Upgrade</td>
+    <td align="left" style="padding:8px"> USER3 </td>
+    <td align="left">2023-04-17 13:56:52</td>
+    <td>2023-04-17 13:56:52</td>
+    <td>2.0.0.2010</td>
+    <td></td>
+    <td style="width:auto">successful </td>
+</tr>
+<tr align="center">
+    <td height="30px" style="width:auto;">Dongle FW Upgrade</td>
+    <td align="left" style="padding:8px"> ADMIN </td>
+    <td align="left">2023-04-20 10:05:22</td>
+    <td>2023-04-20 10:05:22</td>
+    <td>2.0.0.2010</td>
+    <td></td>
+    <td style="width:auto">successful </td>
+</tr>
+<tr align="center">
+    <td height="30px" style="width:auto;">Dongle FW Upgrade</td>
+    <td align="left" style="padding:8px"> ADMIN </td>
+    <td align="left">2023-04-20 10:05:23</td>
+    <td>2023-04-20 10:05:23</td>
+    <td>2.0.0.2010</td>
+    <td></td>
+    <td style="width:auto">successful </td>
+</tr>
+<tr align="center">
+    <td height="30px" style="width:auto;">KVM FW Upgrade</td>
+    <td align="left" style="padding:8px">ADMIN</td>
+    <td align="left">2023-04-20 10:05:40</td>
+    <td>2023-04-20 10:05:40</td>
+    <td></td>
+    <td></td>
+    <td style="width:auto">successful </td>
+</tr>
+<tr align="center">
+    <td height="30px" style="width:auto;">Dongle FW Upgrade</td>
+    <td align="left" style="padding:8px"> ADMIN </td>
+    <td align="left">2023-04-20 10:05:58</td>
+    <td>2023-04-20 10:05:58</td>
+    <td>2.0.0.2010</td>
+    <td></td>
+    <td style="width:auto">successful </td>
+</tr>
+<tr align="center">
+    <td height="30px" style="width:auto;">Dongle FW Upgrade</td>
+    <td align="left" style="padding:8px"> ADMIN </td>
+    <td align="left">2023-04-20 10:06:23</td>
+    <td>2023-04-20 10:06:23</td>
+    <td>2.0.0.2010</td>
+    <td></td>
+    <td style="width:auto">successful </td>
+</tr>
+<tr align="center">
+    <td height="30px" style="width:auto;">KVM FW Upgrade</td>
+    <td align="left" style="padding:8px">ADMIN</td>
+    <td align="left">2023-04-27 12:16:08</td>
+    <td>2023-04-27 12:16:08</td>
+    <td></td>
+    <td></td>
+    <td style="width:auto">successful </td>
+</tr>
+</table>
+</form>
+<div class="pagination" style="margin-left: 42px;">            
+      </br><a href='upgradehistory.php?page=2'>  Prev Page &nbsp;3<a href='upgradehistory.php?page=4'>  &nbsp; Next </a>    
+</div>  

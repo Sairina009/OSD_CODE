@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Over IP KVM</title>
+    <style type="text/css">
+         #videoOG {
+            position: fixed;
+            z-index: -1;
+        }
+        #display {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-left: 69px;
+            margin-top: -790px;
+        }
+        .image-container {
+            position: relative;
+            width: calc(25% - 15px); 
+            box-sizing: border-box;
+        }
+        .image-info {
+            position: absolute;
+            bottom: 50px;
+            left: 115px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px;
+            
+        }
+        .max-connections-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 0, 0, 0.5);
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="display">
+                    <div class="image-container">
+                <!-- Modify the image container to include a connect button -->
+                <img src='view_thumbnail.php?id=1&timestamp=1713339697' alt='port1.jpg' style="width: 95%; height: auto; margin-bottom: 20px; " class="button connect-button" data-id="1" onclick="connectToIndex(1)">
+               <!-- Display max connections message if applicable -->
+                <div class="image-info">
+                    <p>Encoder Name:Encoder1</p>
+                    <p>Connection Type: HDMI-CIM</p>
+                    <p>Status: Yes</p>
+                     <p>Connection:  </p>
+                </div>
+            </div>
+            <!-- Add hidden input field for decoder_id with unique ID -->
+            <input type="hidden" id="decoder_id_1" name="decoder_id" value="1">
+                    <div class="image-container">
+                <!-- Modify the image container to include a connect button -->
+                <img src='view_thumbnail.php?id=2&timestamp=1713339697' alt='port2.jpg' style="width: 95%; height: auto; margin-bottom: 20px; " class="button connect-button" data-id="2" onclick="connectToIndex(2)">
+               <!-- Display max connections message if applicable -->
+                <div class="image-info">
+                    <p>Encoder Name:encoder2</p>
+                    <p>Connection Type: DP-CIM</p>
+                    <p>Status: Yes</p>
+                     <p>Connection:  </p>
+                </div>
+            </div>
+            <!-- Add hidden input field for decoder_id with unique ID -->
+            <input type="hidden" id="decoder_id_2" name="decoder_id" value="1">
+                    <div class="image-container">
+                <!-- Modify the image container to include a connect button -->
+                <img src='view_thumbnail.php?id=3&timestamp=1713339697' alt='port3.jpg' style="width: 95%; height: auto; margin-bottom: 20px; " class="button connect-button" data-id="3" onclick="connectToIndex(3)">
+               <!-- Display max connections message if applicable -->
+                <div class="image-info">
+                    <p>Encoder Name:encoder3</p>
+                    <p>Connection Type: HDMI-CIM</p>
+                    <p>Status: Yes</p>
+                     <p>Connection:  </p>
+                </div>
+            </div>
+            <!-- Add hidden input field for decoder_id with unique ID -->
+            <input type="hidden" id="decoder_id_3" name="decoder_id" value="1">
+                    <div class="image-container">
+                <!-- Modify the image container to include a connect button -->
+                <img src='view_thumbnail.php?id=4&timestamp=1713339697' alt='port4.jpg' style="width: 95%; height: auto; margin-bottom: 20px; " class="button connect-button" data-id="4" onclick="connectToIndex(4)">
+               <!-- Display max connections message if applicable -->
+                <div class="image-info">
+                    <p>Encoder Name:encoder4</p>
+                    <p>Connection Type: HDMI-CIM</p>
+                    <p>Status: Yes</p>
+                     <p>Connection:  </p>
+                </div>
+            </div>
+            <!-- Add hidden input field for decoder_id with unique ID -->
+            <input type="hidden" id="decoder_id_4" name="decoder_id" value="1">
+                    <div class="image-container">
+                <!-- Modify the image container to include a connect button -->
+                <img src='view_thumbnail.php?id=5&timestamp=1713339697' alt='port5.jpg' style="width: 95%; height: auto; margin-bottom: 20px; " class="button connect-button" data-id="5" onclick="connectToIndex(5)">
+               <!-- Display max connections message if applicable -->
+                <div class="image-info">
+                    <p>Encoder Name:portname5</p>
+                    <p>Connection Type: DP-CIM</p>
+                    <p>Status: Yes</p>
+                     <p>Connection:  </p>
+                </div>
+            </div>
+            <!-- Add hidden input field for decoder_id with unique ID -->
+            <input type="hidden" id="decoder_id_5" name="decoder_id" value="1">
+                    <div class="image-container">
+                <!-- Modify the image container to include a connect button -->
+                <img src='view_thumbnail.php?id=6&timestamp=1713339697' alt='port6.jpg' style="width: 95%; height: auto; margin-bottom: 20px; " class="button connect-button" data-id="6" onclick="connectToIndex(6)">
+               <!-- Display max connections message if applicable -->
+                <div class="image-info">
+                    <p>Encoder Name:encoder6</p>
+                    <p>Connection Type: HDMI-CIM</p>
+                    <p>Status: Yes</p>
+                     <p>Connection:  </p>
+                </div>
+            </div>
+            <!-- Add hidden input field for decoder_id with unique ID -->
+            <input type="hidden" id="decoder_id_6" name="decoder_id" value="1">
+                    <div class="image-container">
+                <!-- Modify the image container to include a connect button -->
+                <img src='view_thumbnail.php?id=7&timestamp=1713339697' alt='port7.jpg' style="width: 95%; height: auto; margin-bottom: 20px; " class="button connect-button" data-id="7" onclick="connectToIndex(7)">
+               <!-- Display max connections message if applicable -->
+                <div class="image-info">
+                    <p>Encoder Name:encoder7</p>
+                    <p>Connection Type: HDMI-CIM</p>
+                    <p>Status: Yes</p>
+                     <p>Connection:  </p>
+                </div>
+            </div>
+            <!-- Add hidden input field for decoder_id with unique ID -->
+            <input type="hidden" id="decoder_id_7" name="decoder_id" value="1">
+                    <div class="image-container">
+                <!-- Modify the image container to include a connect button -->
+                <img src='view_thumbnail.php?id=8&timestamp=1713339697' alt='port8.jpg' style="width: 95%; height: auto; margin-bottom: 20px; " class="button connect-button" data-id="8" onclick="connectToIndex(8)">
+               <!-- Display max connections message if applicable -->
+                <div class="image-info">
+                    <p>Encoder Name:encoder8</p>
+                    <p>Connection Type: DP-CIM</p>
+                    <p>Status: Yes</p>
+                     <p>Connection:  </p>
+                </div>
+            </div>
+            <!-- Add hidden input field for decoder_id with unique ID -->
+            <input type="hidden" id="decoder_id_8" name="decoder_id" value="1">
+            </div>
+    <script type="text/javascript" src="/public/jsmpeg.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <div class="page-content container">
+        <div id="remoteVideos" oncontextmenu="return false;" style="display: none;">
+            <canvas class="camera" id="videoCanvas"></canvas>
+            <div id="canvasButtonContainer">
+                <button class="button" id="closeBtn" onclick="closeCanvas()">Close</button>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+    function connectToIndex(id) {
+        var decoder_id = document.getElementById('decoder_id_' + id).value; // Fetch the decoder_id from the hidden input field
+        console.log("Button clicked with id: " + id + ", decoder_id: " + decoder_id);
+        updateDatabase(id);
+        // Send an AJAX request to check the user's authority status
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'check_authority.php', true);
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                console.log("Response:", response);
+                // Extract authority and view_only from the response
+                var userAuthority = response.authority;
+                var viewOnly = response.view_only;
+                console.log("Authority: " + userAuthority + ", View Only: " + viewOnly);
+                // Check authority and view_only to determine access
+                if ((userAuthority === "Share" && viewOnly === "0") || (userAuthority === "View" && viewOnly === "0")) {
+                    // If user has Share authority and view_only is 0, or View authority and view_only is 0, proceed to index.html
+                    console.log("User has full access. Redirecting to index.html.");
+                    window.location.href = "index.html?id=" + id + "&decoder_id=" + decoder_id; // Pass decoder_id as URL parameter
+                } else if (viewOnly === "1" || viewOnly === "2") {
+                    // If view_only is 1, block access
+                    console.log("User has full access. Redirecting to index.html.");
+                    window.location.href = "index.html?id=" + id + "&decoder_id=" + decoder_id;
+                } else {
+                    // For all other cases, block access
+                    console.log("Access blocked.");
+                    alert("You do not have access.");
+                }
+            }
+        };
+        xhr.send('id=' + id); // Send id and decoder_id in the request body
+    }
+
+        // Function to update data in the database
+        function updateDatabase(id) {
+            // Additional data to pass to the PHP script
+            var data = new FormData();
+            data.append('id', id); // Assuming port_id corresponds to the 'id' field in the database
+            data.append('save', 'true'); // Adding this line to indicate saving
+            // Send an AJAX request to update the database
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'uheader.php', true); // Specify the PHP script to handle database update
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = xhr.responseText;
+                    //console.log("Response from uheader.php:", response);
+                    // Handle response if needed
+                }
+            };
+            // Send the data to the PHP script
+            xhr.send(data);
+        }
+    </script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script type="text/javascript">
+    function startStream(thumbnailId) {
+        $.ajax({
+            type: "GET",
+            url: "view_thumbnail.php?id=" + thumbnailId + "&timestamp=" + new Date().getTime(),
+            success: function(data) {
+                  $("#image-container").html('<img src="data:image/png;base64,' + data + '" />');
+            },
+            error: function(xhr, status, error) {
+                console.error("Ajax request failed:", status, error);
+            }
+        });
+    }
+
+    function closeCanvas() {
+            document.getElementById("remoteVideos").style.display = "none";
+            canvasVisible = false;
+             if (player) {
+                player.stop();
+            }
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                ws.close();
+            }
+        }
+</script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script type="text/javascript">
+   function refreshThumbnails() {
+        $.ajax({
+            type: "GET",
+            url: "refresh_thumbnails.php", 
+            success: function(data) {
+                $("#display").html(data);
+            }
+        });
+    }
+
+    var refreshRate = 5000; 
+    var refreshInterval = setInterval(refreshThumbnails, refreshRate);
+
+    function stopRefresh() {
+        clearInterval(refreshInterval);
+    }
+
+    window.addEventListener("beforeunload", stopRefresh);
+
+</script>
+
+    <div class="pagination" style="margin-left: 82px;">            
+      </br><a href='demo.php?page=2'> &nbsp; Next </a>    
+</div>  

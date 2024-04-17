@@ -1,0 +1,27 @@
+<div style="border:1px solid black;padding:2px;height:775px;margin-top:-1px;width:1820px;margin-left:70px">
+    <br>
+    <form action method=post>
+        <label><span style=margin-left:35px><span style=font-size:large><b>Thumbnail View:</b></span></label>
+        <input type="radio" class="inputabs" name="view" checked id="a1" value="ON"
+            onclick="storeSelectionb(this)" />&nbsp;&nbsp;ON        &nbsp;
+        <input type="radio" class="inputabs" name="view" id="a2" value="OFF"
+            onclick="storeSelectionb(this)" />&nbsp;&nbsp;OFF <br />
+        <input type="submit" value="Save" id="result" style=margin-left:350px;width:auto;padding:1px;height:35px>
+</div>
+</form>
+</div>
+</body></html>
+<script type="text/javascript">
+    var keyb = "user_selectionb"
+    var lastSelection;
+    function storeSelectionb(el) {
+        window.localStorage.setItem(keyb, el.id);
+    }
+        function init() {
+        var last = window.localStorage.getItem(keyb);
+        if (last) {
+            document.getElementById(last).checked = true;
+        }
+    }
+    init();
+</script>

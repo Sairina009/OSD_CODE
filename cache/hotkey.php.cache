@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+    <meta charset=UTF-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width, initial-scale=1.0">
+    <title>Over IP KVM</title>
+</head>
+
+<body>
+    <div style="border:1px solid midnightblue;padding:2px;height:775px;margin-top:-1px;width:1820px;margin-left:70px">
+        
+        <form action="" method="post" id="myForm">
+        &nbsp;&nbsp;<input type="radio"  class="inputabs" name="hotkey" id="a1" value="< Scroll Lock>" checked />&nbsp;&nbsp;< Scroll Lock > < Scroll Lock > < Function Hotkey >< Enter><br>
+            &nbsp;&nbsp;<input type="radio" class="inputabs" name="hotkey" id="a2" value="< Caps Lock>"
+            checked="checked" />&nbsp;&nbsp;< Caps Lock > < Caps Lock > < Function Hotkey >< Enter>  &nbsp;<br>
+            &nbsp;&nbsp;<input type="radio" class="inputabs" name="hotkey" id="a3" value="< Ctrl>"
+             />&nbsp;&nbsp;< Ctrl> < Ctrl> < Function Hotkey> < Enter> <br />
+        <input type="submit" value="Save" id="result" name="submit"
+                style=margin-left:180px;width:auto;padding:1px;height:35px>
+        <table id=displaytable cellpadding=2 cellspacing=0 border=3
+            style=width:70%;height:30%;margin-left:35px;line-height:3;margin-top:15px>
+            <th class=lbl style=height:30%;background-color:lightsteelblue;line-height:2;font-size:16px;font-style:bold>
+            Call OSD Menu></th>
+            <tr align=left>
+            <tr align=center>
+            <td class=lbl>No</td>
+            <td class=lbl>Select Hotkey Mode</td>
+            <td class=lbl>Corresponding Function</td>
+        </tr>
+        <tr>
+            <td align=center>1</td>
+            <td align=left>&nbsp;< Scroll Lock > < Scroll Lock > < Function Hotkey >< Enter></td>
+            <td align=left>&nbsp;< Scroll Lock >< Scroll Lock >< Scroll Lock >< Enter></td>
+        </tr>
+        <tr>
+            <td align=center>2</td>
+            <td align=left>&nbsp;< Caps Lock > < Caps Lock > < Function Hotkey >< Enter></td>
+            <td align=left>&nbsp; < Caps Lock >< Caps Lock >< Caps Lock >< Enter></td>
+        </tr>
+        <tr>
+            <td align=center>3</td>
+            <td align=left>&nbsp;< Ctrl> < Ctrl> < Function Hotkey> < Enter></td>
+            <td align=left>&nbsp;< Ctrl> < Ctrl> < Ctrl> < Enter> </td>
+            </tr>
+        </table>
+        <table id=displaytable cellpadding=2 cellspacing=0 border=3
+            style=width:70%;height:30%;margin-left:35px;line-height:3;margin-top:15px>
+            <tr align=left>
+                <th class=lblh style=background-color:lightsteelblue>Function Hotkey</th>
+            </tr>
+            <tr align=center>
+            <td class=lbl>No</td>
+            <td class=lbl>Hotkey Combination</td>
+            <td class=lbl>Corresponding Function</td>
+        </tr>
+        <tr>
+            <td align=center>1</td>
+            <td align=left>&nbsp;< n > : Port Number (1 ~ 32)</td>
+            <td align=left>&nbsp;User Switch to PC Port n </td>
+        </tr>
+        <tr>
+            <td align=center>2</td>
+            <td align=left> &nbsp;< > </td>
+            <td align=left> &nbsp;User Switch to Previous Port (Port - 1) </td>
+        </tr>
+        <tr>
+            <td align=center>3</td>
+            <td align=left> &nbsp;< ></td>
+            <td align=left>&nbsp;User Switch to Next Port (Port + 1) </td>
+        </tr>
+        <tr>
+            <td align=center>4</td>
+            <td align=left> &nbsp;< S ></td>
+            <td align=left> &nbsp;Start Auto -Scan </td>
+        </tr>
+        <tr>
+            <td align=center>5</td>
+            <td align=left> &nbsp;< V > </td>
+            <td align=left>&nbsp;Thumbnail-View </td>
+        </tr>
+        </table>
+        </form>
+    </div>
+    
+</body>
+
+</html>

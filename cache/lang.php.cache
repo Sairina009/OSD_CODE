@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Over IP KVM</title>
+</head>
+
+<body>
+    <form action="language.php" method="POST">
+        <div
+            style="border: 1px solid midnightblue;padding: 2px;height: 775px;margin-top: -1px;width: 1820px;margin-left: 70px;">
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="language" value="en" checked="checked"> English  <input type="radio" name="language" value="fr" > French  <input type="radio" name="language" value="gr" > German  <br>
+  <br>
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Save">
+        </div>
+    </form>
+</body>
+
+</html>

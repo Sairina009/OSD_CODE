@@ -1,0 +1,105 @@
+<form action method=post name="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/function.php</b> on line <b>2</b><br />
+" id="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/function.php</b> on line <b>2</b><br />
+">
+    <tr style=text-align:center>
+        <td style="line-height:2" ;>1</td>
+        <td align=left style=padding:7px style="line-height: 2" ;>&nbsp;USB HID Devices </td>
+        <td align="left" style="line-height:2" ;> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type=checkbox id=u1 class=save-cb-state name=user1                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=u1 class=save-cb-state name=user2                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=u1 class=save-cb-state name=user3                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=u1 class=save-cb-state name=user4                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=u1 class=save-cb-state name=user5                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=u1 class=save-cb-state name=user6                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=u1 class=save-cb-state name=user7                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=u1 class=save-cb-state name=user8                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type=checkbox id=u2 class=save-cb-state name=user19                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=u2 class=save-cb-state name=user110                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=u2 class=save-cb-state name=user111                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=u2 class=save-cb-state name=user112                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=u2 class=save-cb-state name=user113                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=u2 class=save-cb-state name=user114                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=u2 class=save-cb-state name=user115                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=u2 class=save-cb-state name=user116                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <td style="line-height:2" ;><input type="submit" value="Save" name="hid"></td>
+    </tr>
+    <tr style=text-align:center>
+        <td style="line-height:2" ;>2</td>
+        <td align=left style=padding:7px style="line-height: 2" ;>&nbsp;USB Mass Storage </td>
+        <td align="left" style="line-height:2" ;> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type=checkbox id=m1 name=mass1                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=m1 name=mass2                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=m1 name=mass3                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=m1 name=mass4                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=m1 name=mass5                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=m1 name=mass6                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=m1 name=mass7                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=m1 name=mass8                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type=checkbox id=m2 name=mass19                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=m2 name=mass110                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=m2 name=mass111                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=m2 name=mass112                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=m2 name=mass113                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=m2 name=mass114                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=m2 name=mass115                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=m2 name=mass116                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <td style="line-height:2" ;><input type="submit" value="Save" name="mass"></td>
+    </tr>
+ </td>
+    </tr>
+    <tr style=text-align:center>
+        <td style="line-height:2" ;>3</td>
+        <td align=left style=padding:7px style="line-height: 2" ;>&nbsp;USB Card Reader </td>
+        <td align="left" style="line-height:2" ;> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type=checkbox id=c1 name=card1                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=c1 name=card2                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=c1 name=card3                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=c1 name=card4                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=c1 name=card5                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=c1 name=card6                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=c1 name=card7                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=c1 name=card8                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type=checkbox id=c2 name=card19                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=c2 name=card110                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=c2 name=card111                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=c2 name=card112                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=c2 name=card113                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=c2 name=card114                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=c2 name=card115                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=c2 name=card116                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <td style="line-height:2" ;><input type="submit" value="Save" name="card"></td>
+    </tr>
+    <tr style=text-align:center>
+        <td style="line-height:2" ;>3</td>
+        <td align=left style=padding:7px style="line-height: 2" ;>&nbsp;Virtual Media </td>
+        <td align="left" style="line-height:2" ;> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type=checkbox id=v1 name=virtual1                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=v1 name=virtual2                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=v1 name=virtual3                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=v1 name=virtual4                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=v1 name=virtual5                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=v1 name=virtual6                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=v1 name=virtual7                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=v1 name=virtual8                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type=checkbox id=v2 name=virtual19                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=v2 name=virtual110                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=v2 name=virtual111                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=v2 name=virtual112                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=v2 name=virtual113                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=v2 name=virtual114                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=v2 name=virtual115                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type=checkbox id=v2 name=virtual116                checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <td style="line-height:2" ;><input type="submit" value="Save" name="virtual"></td>
+    </tr>
+  
+</form>
+</table>
+</body>
+
+</html>

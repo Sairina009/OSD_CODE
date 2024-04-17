@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+    <meta charset=UTF-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width, initial-scale=1.0">
+    <title>Over IP KVM</title>
+</head>
+
+<body>
+    <div id=display style=margin-top:-850px;margin-left:85px>
+        <label>Device Model : OCT-432 </label>
+                <br><label> Hardware Version : V0.01,July,23,2021 </label>
+        <br><label> Dongle FW Version : V</label>
+        <br> <label> KVM FW Version : V3.0.0.1245,Aug,25,20</label>
+    </div>
+    <table id=displaytable cellpadding=2 cellspacing=0 border=3 style=margin-left:85px;line-height:3;width:70%>
+        <tr align=left style=background-color:lightsteelblue>
+            <td class=lbl>Call OSD Menu</td>
+        </tr>
+        <tr align=center style="height:30%">
+            <td class=lbl>No</td>
+            <td class=lbl>Select Hotkey Mode</td>
+            <td class=lbl>Corresponding Function</td>
+        </tr>
+        <tr>
+            <td align=center>1</td>
+            <td align=left>&nbsp;< Scroll Lock > < Scroll Lock > < Function Hotkey >< Enter></td>
+            <td align=left>&nbsp;< Scroll Lock >< Scroll Lock >< Scroll Lock >< Enter></td>
+        </tr>
+        <tr>
+            <td align=center>2</td>
+            <td align=left>&nbsp;< Caps Lock > < Caps Lock > < Function Hotkey >< Enter></td>
+            <td align=left>&nbsp; < Caps Lock >< Caps Lock >< Caps Lock >< Enter></td>
+        </tr>
+        <tr>
+            <td align=center>3</td>
+            <td align=left>&nbsp;< Ctrl> < Ctrl> < Function Hotkey> < Enter></td>
+            <td align=left>&nbsp;< Ctrl> < Ctrl> < Ctrl> < Enter> </td>
+        </tr>
+    </table><br>
+    <table id=displaytable1 cellpadding=2 cellspacing=0 border=3 style=margin-left:85px;line-height:3;width:70%>
+        <tr align=left style=background-color:lightsteelblue>>
+            <td class=lbl>Function Hotkey</td>
+        </tr>
+        <tr align=center>
+            <td class=lbl>No</td>
+            <td class=lbl>Hotkey Combination</td>
+            <td class=lbl>Corresponding Function</td>
+        </tr>
+        <tr>
+            <td align=center>1</td>
+            <td align=left>&nbsp;< n > : Port Number (1 ~ 32)</td>
+            <td align=left>&nbsp;User Switch to PC Port n </td>
+        </tr>
+        <tr>
+            <td align=center>2</td>
+            <td align=left> &nbsp;< > </td>
+            <td align=left> &nbsp;User Switch to Previous Port (Port - 1) </td>
+        </tr>
+        <tr>
+            <td align=center>3</td>
+            <td align=left> &nbsp;< ></td>
+            <td align=left>&nbsp;User Switch to Next Port (Port + 1) </td>
+        </tr>
+        <tr>
+            <td align=center>4</td>
+            <td align=left> &nbsp;< S ></td>
+            <td align=left> &nbsp;Start Auto -Scan </td>
+        </tr>
+        <tr>
+            <td align=center>5</td>
+            <td align=left> &nbsp;< V > </td>
+            <td align=left>&nbsp;Thumbnail-View </td>
+        </tr>
+    </table>
+    </div>
+</body>
+
+</html>

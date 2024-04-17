@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+    <meta charset=UTF-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width, initial-scale=1.0">
+    <title>Over IP KVM</title>
+</head>
+
+<body>
+    <br>
+    <form action method=post enctype=multipart/form-data>
+                <label style=margin-left:85px;>Path : </label><label
+            style=margin-left:11px;background-color:lightblue;width:750px;>C:/xampp1/htdocs/user1 (2).sql</label>
+        <input type=file name=fileToUpload id=fileToUpload required style=margin-left:10px>
+        <br><br>
+        <input type=submit value=Upgrade name=save style=margin-left:900px>
+    </form>
+</body>
+
+</html>

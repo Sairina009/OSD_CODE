@@ -1,0 +1,228 @@
+<form action method=post name="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+" id="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+">
+    <tr style="text-align: center;">
+        <td style="line-height:2" ;><input type="hidden" name="id" value="1">
+          1        <td align="left" style="padding:5px">&nbsp;Admin</td>
+        <td>
+                      <input type=radio id=a1 value=Admin name=user1                checked="checked">Admin            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type=radio id=a2 value=User name=user1                >User        </td>
+        <td><input type=submit value=Save name=submit style=width:auto;padding:1px;height:40px></td>
+    </tr>
+</form>
+<form action method=post name="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+" id="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+">
+    <tr style="text-align: center;">
+        <td style="line-height:2" ;><input type="hidden" name="id" value="2">
+          2        <td align="left" style="padding:5px">&nbsp;USER2</td>
+        <td>
+                      <input type=radio id=a1 value=Admin name=user1                >Admin            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type=radio id=a2 value=User name=user1                checked="checked">User        </td>
+        <td><input type=submit value=Save name=submit style=width:auto;padding:1px;height:40px></td>
+    </tr>
+</form>
+<form action method=post name="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+" id="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+">
+    <tr style="text-align: center;">
+        <td style="line-height:2" ;><input type="hidden" name="id" value="3">
+          3        <td align="left" style="padding:5px">&nbsp;USER3</td>
+        <td>
+                      <input type=radio id=a1 value=Admin name=user1                checked="checked">Admin            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type=radio id=a2 value=User name=user1                >User        </td>
+        <td><input type=submit value=Save name=submit style=width:auto;padding:1px;height:40px></td>
+    </tr>
+</form>
+<form action method=post name="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+" id="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+">
+    <tr style="text-align: center;">
+        <td style="line-height:2" ;><input type="hidden" name="id" value="4">
+          4        <td align="left" style="padding:5px">&nbsp;USER4</td>
+        <td>
+                      <input type=radio id=a1 value=Admin name=user1                checked="checked">Admin            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type=radio id=a2 value=User name=user1                >User        </td>
+        <td><input type=submit value=Save name=submit style=width:auto;padding:1px;height:40px></td>
+    </tr>
+</form>
+<form action method=post name="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+" id="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+">
+    <tr style="text-align: center;">
+        <td style="line-height:2" ;><input type="hidden" name="id" value="5">
+          5        <td align="left" style="padding:5px">&nbsp;USER5</td>
+        <td>
+                      <input type=radio id=a1 value=Admin name=user1                checked="checked">Admin            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type=radio id=a2 value=User name=user1                >User        </td>
+        <td><input type=submit value=Save name=submit style=width:auto;padding:1px;height:40px></td>
+    </tr>
+</form>
+<form action method=post name="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+" id="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+">
+    <tr style="text-align: center;">
+        <td style="line-height:2" ;><input type="hidden" name="id" value="6">
+          6        <td align="left" style="padding:5px">&nbsp;USER6</td>
+        <td>
+                      <input type=radio id=a1 value=Admin name=user1                checked="checked">Admin            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type=radio id=a2 value=User name=user1                >User        </td>
+        <td><input type=submit value=Save name=submit style=width:auto;padding:1px;height:40px></td>
+    </tr>
+</form>
+<form action method=post name="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+" id="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+">
+    <tr style="text-align: center;">
+        <td style="line-height:2" ;><input type="hidden" name="id" value="7">
+          7        <td align="left" style="padding:5px">&nbsp;USER7</td>
+        <td>
+                      <input type=radio id=a1 value=Admin name=user1                >Admin            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type=radio id=a2 value=User name=user1                checked="checked">User        </td>
+        <td><input type=submit value=Save name=submit style=width:auto;padding:1px;height:40px></td>
+    </tr>
+</form>
+<form action method=post name="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+" id="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+">
+    <tr style="text-align: center;">
+        <td style="line-height:2" ;><input type="hidden" name="id" value="8">
+          8        <td align="left" style="padding:5px">&nbsp;USER8</td>
+        <td>
+                      <input type=radio id=a1 value=Admin name=user1                checked="checked">Admin            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type=radio id=a2 value=User name=user1                >User        </td>
+        <td><input type=submit value=Save name=submit style=width:auto;padding:1px;height:40px></td>
+    </tr>
+</form>
+<form action method=post name="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+" id="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+">
+    <tr style="text-align: center;">
+        <td style="line-height:2" ;><input type="hidden" name="id" value="9">
+          9        <td align="left" style="padding:5px">&nbsp;USER9</td>
+        <td>
+                      <input type=radio id=a1 value=Admin name=user1                checked="checked">Admin            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type=radio id=a2 value=User name=user1                >User        </td>
+        <td><input type=submit value=Save name=submit style=width:auto;padding:1px;height:40px></td>
+    </tr>
+</form>
+<form action method=post name="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+" id="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+">
+    <tr style="text-align: center;">
+        <td style="line-height:2" ;><input type="hidden" name="id" value="10">
+          10        <td align="left" style="padding:5px">&nbsp;USER10</td>
+        <td>
+                      <input type=radio id=a1 value=Admin name=user1                >Admin            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type=radio id=a2 value=User name=user1                checked="checked">User        </td>
+        <td><input type=submit value=Save name=submit style=width:auto;padding:1px;height:40px></td>
+    </tr>
+</form>
+<form action method=post name="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+" id="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+">
+    <tr style="text-align: center;">
+        <td style="line-height:2" ;><input type="hidden" name="id" value="11">
+          11        <td align="left" style="padding:5px">&nbsp;USER11</td>
+        <td>
+                      <input type=radio id=a1 value=Admin name=user1                checked="checked">Admin            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type=radio id=a2 value=User name=user1                >User        </td>
+        <td><input type=submit value=Save name=submit style=width:auto;padding:1px;height:40px></td>
+    </tr>
+</form>
+<form action method=post name="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+" id="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+">
+    <tr style="text-align: center;">
+        <td style="line-height:2" ;><input type="hidden" name="id" value="12">
+          12        <td align="left" style="padding:5px">&nbsp;USER12</td>
+        <td>
+                      <input type=radio id=a1 value=Admin name=user1                >Admin            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type=radio id=a2 value=User name=user1                checked="checked">User        </td>
+        <td><input type=submit value=Save name=submit style=width:auto;padding:1px;height:40px></td>
+    </tr>
+</form>
+<form action method=post name="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+" id="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+">
+    <tr style="text-align: center;">
+        <td style="line-height:2" ;><input type="hidden" name="id" value="13">
+          13        <td align="left" style="padding:5px">&nbsp;USER13</td>
+        <td>
+                      <input type=radio id=a1 value=Admin name=user1                >Admin            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type=radio id=a2 value=User name=user1                checked="checked">User        </td>
+        <td><input type=submit value=Save name=submit style=width:auto;padding:1px;height:40px></td>
+    </tr>
+</form>
+<form action method=post name="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+" id="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+">
+    <tr style="text-align: center;">
+        <td style="line-height:2" ;><input type="hidden" name="id" value="14">
+          14        <td align="left" style="padding:5px">&nbsp;USER14</td>
+        <td>
+                      <input type=radio id=a1 value=Admin name=user1                >Admin            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type=radio id=a2 value=User name=user1                checked="checked">User        </td>
+        <td><input type=submit value=Save name=submit style=width:auto;padding:1px;height:40px></td>
+    </tr>
+</form>
+<form action method=post name="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+" id="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+">
+    <tr style="text-align: center;">
+        <td style="line-height:2" ;><input type="hidden" name="id" value="15">
+          15        <td align="left" style="padding:5px">&nbsp;USER15</td>
+        <td>
+                      <input type=radio id=a1 value=Admin name=user1                checked="checked">Admin            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type=radio id=a2 value=User name=user1                >User        </td>
+        <td><input type=submit value=Save name=submit style=width:auto;padding:1px;height:40px></td>
+    </tr>
+</form>
+<form action method=post name="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+" id="form<br />
+<b>Notice</b>:  Undefined variable: i in <b>/var/www/html/od/useraut.php</b> on line <b>4</b><br />
+">
+    <tr style="text-align: center;">
+        <td style="line-height:2" ;><input type="hidden" name="id" value="16">
+          16        <td align="left" style="padding:5px">&nbsp;USER16</td>
+        <td>
+                      <input type=radio id=a1 value=Admin name=user1                checked="checked">Admin            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type=radio id=a2 value=User name=user1                >User        </td>
+        <td><input type=submit value=Save name=submit style=width:auto;padding:1px;height:40px></td>
+    </tr>
+</form>
+</table>
+</body>
+
+</html>

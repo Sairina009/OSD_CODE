@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+    <meta charset=UTF-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width, initial-scale=1.0">
+    <title>Over IP KVM</title>
+</head>
+
+<body>
+    <div style="border:1px solid black;padding:2px;height:775px;margin-top:-1px;width:1820px;margin-left:70px">
+        <br>
+        <form action="" method="post" id="myForm">
+            <label><span style=font-size:larger;margin-left:35px><span
+                        style=font-size:large><b>Banner:</b></span></label>&nbsp;
+            <input type="radio" class="targetSettingRegisteredUsers inputabs" name="banner" id="a1" value="OFF" checked
+                checked onclick="storeSelectionb1(this)" />&nbsp;&nbsp;OFF            &nbsp;<input type="radio" class="inputabs" name="banner" id="a2" value="ON"
+                onclick="storeSelectionb1(this)" />&nbsp;&nbsp;ON &nbsp;
+            <input type="radio" class="inputabs" name="banner" id="a3" value="ALWAYS ON"
+                onclick="storeSelectionb1(this)" />&nbsp;&nbsp;ALWAYS ON<br />
+                                <label><span style=font-size:larger;margin-left:35px><span
+                        style=font-size:large><b>Time:</b></span></label>&nbsp;
+                        <input type="text" name="time" value="8">  Seconds<br>
+                <label><span style=font-size:larger;margin-left:93px>(1~99 Seconds)</span></label>
+            <input type="submit" value="Save" id="result"
+                style=margin-left:180px;width:auto;padding:1px;height:35px>
+            
+    </div>
+    </form>
+</body>
+
+</html>
+<script type="text/javascript">
+var keyb1 = "user_selectionb1"
+var lastSelection;
+function storeSelectionb1(el) {
+    window.localStorage.setItem(keyb1, el.id);
+}
+function init() {
+    var last = window.localStorage.getItem(keyb1);
+    if (last) {
+        document.getElementById(last).checked = true;
+    }
+}
+init();
+</script>
