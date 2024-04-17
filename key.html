@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="keyboard.min.js"></script>
+    <script>
+        var currentPort = getCurrentPort();
+        var keySequence = ''; // Variable to store the key sequence
+
+        function getCurrentPort() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var portParam = urlParams.get('port');
+            return portParam ? parseInt(portParam, 10) : 1;
+        }
+
+        function navigatePort(direction) {
+            if (direction === 'up' && currentPort < 32) {
+                currentPort++;
+            } else if (direction === 'down' && currentPort > 1) {
+                currentPort--;
+            }
+            updatePort();
+        }
+
+        function updatePort() {
+            window.location.href = 'port.php?port=' + currentPort;
+        }
+
+        function handleKeys(e) {
+            if (e.ctrlKey) {
+                if (e.key === '0') {
+                    // For Ctrl + 0, set the port to 10
+                    currentPort = 10;
+                } else if (e.key >= '1' && e.key <= '9') {
+                    // For Ctrl + 1 to Ctrl + 9, set the port accordingly
+                    currentPort = parseInt(e.key, 10);
+                } else if (e.key === 'ArrowUp' && currentPort < 32) {
+                    e.preventDefault();
+                    navigatePort('up');
+                } else if (e.key === 'ArrowDown' && currentPort > 1) {
+                    e.preventDefault();
+                    navigatePort('down');
+                }
+                updatePort();
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            handleKeys(e);
+        });
+
+        window.addEventListener('keydown', function(event) {
+            if (event.ctrlKey && event.code.startsWith('Digit')) {
+                // Append the pressed digit to the key sequence
+                keySequence += event.key;
+
+                // If the key sequence length is 2, update the port
+                if (keySequence.length === 2) {
+                    var portNumber = parseInt(keySequence);
+                    if (!isNaN(portNumber) && portNumber >= 1 && portNumber <= 32) {
+                        window.location.href = 'port.php?port=' + portNumber;
+                        keySequence = ''; // Reset the key sequence
+                    }
+                }
+            }
+        });
+
+        window.addEventListener('keyup', function(event) {
+            if (event.ctrlKey && event.code === 'KeyV') {
+                window.location.href = 'demo.php';
+            }
+        });
+
+        window.addEventListener('keyup', function(event) {
+            if (event.ctrlKey && event.code === 'KeyS') {
+                event.preventDefault();
+                fetch('auto-scan.php')
+                    .then(response => response.text())
+                    .then(data => {
+                        console.log(data);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+        });
+    </script>
+</head>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="./public/style.css">
+    <title>KVM Remote Decoder</title>
+    <style>
+        /* Ensure that the video canvas is displayed above other elements */
+        #remoteVideos {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Style for the textbox */
+        #textbox {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 2; /* Ensure the textbox is above the canvas */
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h3>KVM REMOTE DECODER</h3>
+        <ul style="position: absolute;right: 30px;">
+            <li style="display: inline-flex; padding: 0px 10px 0px 10px;">
+                <h3><button id="mass">Mass Storage</button></h3>
+            </li>
+            <li style="display: inline-flex; padding: 0px 10px 0px 10px;">
+                <h3><button id="rmass">Remote Mass Storage</button></h3>
+            </li>
+            <li style="display: inline-flex; padding: 0px 10px 0px 10px;">
+                <form action="/upload" enctype="multipart/form-data" method="post">
+                    <input type="file" id="fupload" name="file-to-upload">
+                    <input type="submit" value="Upload">
+                </form>
+            </li>
+            <li style="display: inline-flex; padding: 0px 10px 0px 10px;">
+                <button id="closeBtn">Close</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="page-content container">
+        <div id="remoteVideos" oncontextmenu="return false;">
+            <canvas class="camera" id="videoCanvas" style="width: 100%;"></canvas>
+    <!--         <video id="video" style="margin-top: -1401px; width:100%;background-color: lightpink;" autoplay="autoplay" preload>
+     
+         <source src="http://localhost:8081">
+           </video>
+            <input type="text" id="textbox">  -->
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./public/jsmpeg.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+    var canvas = document.getElementById('videoCanvas');
+    var ws = new WebSocket("ws://127.0.0.1:9999")
+    var player = new jsmpeg(ws, {canvas:canvas, autoplay:true,audio:false,loop: true });
+    var elm = document.getElementById("remoteVideos");
+    ws.onconnect = function (event) {
+        console.log('######### Websocket is now connected ##########');
+    };
+
+    // Function to block keyboard events and log any attempt
+    function blockKeyboardEvents(event) {
+        console.log("Keyboard events are blocked.");
+        console.log("Key pressed: " + event.key);
+        event.preventDefault();
+    }
+
+    // Function to block mouse events and log any attempt
+    function blockMouseEvents(event) {
+        console.log("Mouse events are blocked.");
+        event.preventDefault();
+    }
+
+    // Function to block scroll events and log any attempt
+    function blockScrollEvents(event) {
+        console.log("Scroll events are blocked.");
+        event.preventDefault();
+    }
+
+    // Function to allow keyboard, mouse, and scroll events
+    function allowAllEvents() {
+        // Remove event listeners for blocking events
+        document.removeEventListener('keydown', blockKeyboardEvents, true);
+        document.removeEventListener('keyup', blockKeyboardEvents, true);
+        document.removeEventListener('keypress', blockKeyboardEvents, true);
+        document.removeEventListener('mousedown', blockMouseEvents, true);
+        document.removeEventListener('mouseup', blockMouseEvents, true);
+        document.removeEventListener('mousemove', blockMouseEvents, true);
+        document.removeEventListener('click', blockMouseEvents, true);
+        document.removeEventListener('wheel', blockScrollEvents, { passive: false });
+    }
+
+    // Function to handle mass storage
+    document.getElementById("mass").onclick = function() {
+        ws.send(JSON.stringify({
+            type: "S",
+            content: [ 1 ]
+        }));
+    };
+
+    // Function to handle remote mass storage
+    document.getElementById("rmass").onclick = function() {
+        console.log("Function called for remote mass storage.");
+        ws.send(JSON.stringify({
+            type: "RS",
+            content: [ 1 ]
+        }));
+    };
+
+
+
+
+
+    // Function to handle closing the window
+     document.getElementById("closeBtn").onclick = function() {
+        var params = new URLSearchParams(window.location.search);
+        var id = params.get('id');
+        var decoder_id = params.get('decoder_id');
+        if (decoder_id !== null && id !== null) {
+            $.ajax({
+                type: "POST",
+                url: "remove_decoder.php", // PHP script to handle deletion
+                data: { decoder_id: decoder_id, id: id }, // Pass both decoder_id and id
+                success: function(response) {
+                    console.log("Decoder removed successfully");
+                    window.close(); // Close the window
+                    window.history.back(); // Go back
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error removing decoder:", error);
+                }
+            });
+        } else {
+            console.error("Decoder ID or ID not provided");
+        }
+    };
+
+      function blockKeyboardEvents(event) {
+        console.log("Keyboard events are blocked.");
+        console.log("Key pressed: " + event.key);
+        event.preventDefault();
+    }
+
+    // Function to block mouse events and log any attempt
+    function blockMouseEvents(event) {
+        console.log("Mouse events are blocked.");
+        event.preventDefault();
+    }
+
+    // Function to block scroll events and log any attempt
+    function blockScrollEvents(event) {
+        console.log("Scroll events are blocked.");
+        event.preventDefault();
+    }
+
+    // Function to allow keyboard, mouse, and scroll events
+    function allowAllEvents() {
+        // Remove event listeners for blocking events
+        document.removeEventListener('keydown', blockKeyboardEvents, true);
+        document.removeEventListener('keyup', blockKeyboardEvents, true);
+        document.removeEventListener('keypress', blockKeyboardEvents, true);
+        document.removeEventListener('mousedown', blockMouseEvents, true);
+        document.removeEventListener('mouseup', blockMouseEvents, true);
+        document.removeEventListener('mousemove', blockMouseEvents, true);
+        document.removeEventListener('click', blockMouseEvents, true);
+        document.removeEventListener('wheel', blockScrollEvents, { passive: false });
+    }
+
+ $(document).ready(function() {
+            var params = new URLSearchParams(window.location.search);
+            var id = params.get('id');
+
+            if (id !== null) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'check_authority.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var response = xhr.responseText;
+                        console.log("Response from check_authority.php:", response);
+                        var data = JSON.parse(response);
+                        var authority = data.authority;
+                        var view_only = data.view_only;
+
+                        if (view_only === "0" && authority === "Share") {
+                            console.log("Allowing all elements and events.");
+                            allowAllEvents();
+                        } else {
+                            console.log("Blocking keyboard, mouse, and scroll events.");
+                            document.addEventListener('keydown', blockKeyboardEvents, true);
+                            document.addEventListener('keyup', blockKeyboardEvents, true);
+                            document.addEventListener('keypress', blockKeyboardEvents, true);
+                            document.addEventListener('mousedown', blockMouseEvents, true);
+                            document.addEventListener('mouseup', blockMouseEvents, true);
+                            document.addEventListener('mousemove', blockMouseEvents, true);
+                            document.addEventListener('click', blockMouseEvents, true);
+                            document.addEventListener('wheel', blockScrollEvents, { passive: false });
+                        }
+                    }
+                };
+                xhr.send('id=' + id);
+            } else {
+                console.error("Decoder ID not provided");
+            }
+        });
+    </script>
+
+</body>
+</html>
