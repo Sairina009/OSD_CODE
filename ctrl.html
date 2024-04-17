@@ -1,0 +1,422 @@
+    <script src="keyboard.min.js"></script>
+
+<!--   <script>
+    var ctrlPressed = false;
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Control') {
+            ctrlPressed = true;
+        } else if (ctrlPressed && e.key >= '1' && e.key <= '9') {
+            var portNumber = parseInt(e.key);
+            console.log('Ctrl + ' + e.key + ' pressed!');
+            window.location.href = 'port' + portNumber + '.php';
+        }
+    });
+
+    document.addEventListener('keyup', function(e) {
+        if (e.key === 'Control') {
+            ctrlPressed = false;
+        }
+    });
+</script>
+ 
+
+    <script>
+    keyboardJS.setContext('index');
+
+    var ctrlPressed = false;
+
+    function handleCtrlKey(portOffset) {
+        return function(e) {
+            if (ctrlPressed) {
+                var portNumber = 10 + portOffset; // Adjust the starting port number as needed
+                console.log('Ctrl + ' + (portNumber + 1) + ' pressed!');
+                window.location.href = 'port' + (portNumber + 1) + '.php';
+            }
+            // Reset the state
+            ctrlPressed = false;
+        };
+    }
+
+    // Bind the Ctrl + 1 to Ctrl + 23 keys (for ports 10 to 32)
+    for (var i = 1; i <= 23; i++) {
+        keyboardJS.bind('ctrl + ' + i, handleCtrlKey(i - 1));
+    }
+</script>
+
+ -->
+ 
+  <script src="keyboard.min.js"></script>
+<script>
+    var currentPort = getCurrentPort();
+
+    function getCurrentPort() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var portParam = urlParams.get('port');
+        return portParam ? parseInt(portParam, 10) : 1;
+    }
+
+    function setPort(newPort) {
+        currentPort = newPort;
+        window.location.href = 'port' + currentPort + '.php?port=' + currentPort;
+    }
+
+    function handleKeys(e) {
+        if (e.ctrlKey) {
+            if (e.key === 'ArrowUp' && currentPort < 32) {
+                setPort(currentPort + 1);
+            } else if (e.key === 'ArrowDown' && currentPort > 1) {
+                setPort(currentPort - 1);
+            }
+        }
+    }
+
+    document.addEventListener('keydown', function(e) {
+        handleKeys(e);
+    });
+</script>
+ 
+<!-- <script src="keyboard.min.js"></script>
+
+<script>
+    var ctrlPressed = false;
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Control') {
+            ctrlPressed = true;
+        } else if (ctrlPressed && e.key >= '1' && e.key <= '9') {
+            var portNumber = 10 + parseInt(e.key) - 1; // Adjust the starting port number as needed
+            console.log('Ctrl + ' + e.key + ' pressed!');
+            window.location.href = 'port' + portNumber + '.php';
+        }
+    });
+
+    document.addEventListener('keyup', function(e) {
+        if (e.key === 'Control') {
+            ctrlPressed = false;
+        }
+    });
+
+    keyboardJS.setContext('index');
+
+    function handleCtrlKey(portOffset) {
+        return function(e) {
+            if (ctrlPressed) {
+                var portNumber = 10 + portOffset; // Adjust the starting port number as needed
+                console.log('Ctrl + ' + (portNumber + 1) + ' pressed!');
+                window.location.href = 'port' + (portNumber + 1) + '.php';
+            }
+            // Reset the state
+            ctrlPressed = false;
+        };
+    }
+
+    // Bind the Ctrl + 1 to Ctrl + 9 keys (for ports 11 to 19)
+    for (var i = 1; i <= 9; i++) {
+        keyboardJS.bind('ctrl + ' + i, handleCtrlKey(i - 1));
+    }
+</script>
+ -->
+    <script>
+
+window.addEventListener('keydown', function (event) {
+  if (event.ctrlKey && event.ctrlKey && event.code === 'KeyV') {
+    window.location.href = 'demo.php';
+    event.preventDefault();
+  }
+});
+
+window.addEventListener('keydown', function (event) {
+    if (event.ctrlKey && event.code === 'KeyS') {
+        event.preventDefault();
+
+        fetch('auto-scan.php')
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+});
+
+
+        keyboardJS.setContext('index');
+        var ctrl1Pressed = false;
+        keyboardJS.bind('ctrl + 1', function(e) {
+            ctrl1Pressed = true;
+        });
+        keyboardJS.bind('ctrl + 0', function(e) {
+            if (ctrl1Pressed) {
+                console.log('Ctrl + 10 pressed!');
+                window.location.href = 'port10.php';
+            }
+            
+            ctrl1Pressed = false;
+        });
+
+
+          keyboardJS.bind('ctrl + 1', function(e) {
+            ctrl1Pressed = true;
+        });
+        keyboardJS.bind('ctrl + 2', function(e) {
+            if (ctrl1Pressed) {
+                console.log('Ctrl + 12 pressed!');
+                window.location.href = 'port12.php';
+            }
+     
+            ctrl1Pressed = false;
+        });
+
+          keyboardJS.bind('ctrl + 1', function(e) {
+            ctrl1Pressed = true;
+        });
+        keyboardJS.bind('ctrl + 3', function(e) {
+            if (ctrl1Pressed) {
+                console.log('Ctrl + 13 pressed!');
+                window.location.href = 'port13.php';
+            }
+     
+            ctrl1Pressed = false;
+        });
+
+          keyboardJS.bind('ctrl + 1', function(e) {
+            ctrl1Pressed = true;
+        });
+        keyboardJS.bind('ctrl + 4', function(e) {
+            if (ctrl1Pressed) {
+                console.log('Ctrl + 14 pressed!');
+                window.location.href = 'port14.php';
+            }
+         
+            ctrl1Pressed = false;
+        });
+
+          keyboardJS.bind('ctrl + 1', function(e) {
+            ctrl1Pressed = true;
+        });
+        keyboardJS.bind('ctrl + 5', function(e) {
+            if (ctrl1Pressed) {
+                console.log('Ctrl + 15 pressed!');
+                window.location.href = 'port15.php';
+            }
+           
+            ctrl1Pressed = false;
+        });
+
+          keyboardJS.bind('ctrl + 16', function(e) {
+            ctrl1Pressed = true;
+        });
+        keyboardJS.bind('ctrl + 6', function(e) {
+            if (ctrl1Pressed) {
+                console.log('Ctrl + 16 pressed!');
+                window.location.href = 'port16.php';
+            
+            ctrl1Pressed = false;
+        });
+
+          keyboardJS.bind('ctrl + 1', function(e) {
+            ctrl1Pressed = true;
+        });
+        keyboardJS.bind('ctrl + 7', function(e) {
+            if (ctrl1Pressed) {
+                console.log('Ctrl + 17 pressed!');
+                window.location.href = 'port17.php';
+            }
+          
+            ctrl1Pressed = false;
+        });
+
+          keyboardJS.bind('ctrl + 1', function(e) {
+            ctrl1Pressed = true;
+        });
+        keyboardJS.bind('ctrl + 8', function(e) {
+            if (ctrl1Pressed) {
+                console.log('Ctrl + 18 pressed!');
+                window.location.href = 'port18.php';
+            }
+            
+            ctrl1Pressed = false;
+        });
+
+          keyboardJS.bind('ctrl + 1', function(e) {
+            ctrl1Pressed = true;
+        });
+        keyboardJS.bind('ctrl + 9', function(e) {
+            if (ctrl1Pressed) {
+                console.log('Ctrl + 19 pressed!');
+                window.location.href = 'port19.php';
+            }
+     
+            ctrl1Pressed = false;
+        });
+    </script> 
+ 
+<script src="keyboard.min.js"></script>
+<script>
+        keyboardJS.setContext('index');
+        var ctrl2Pressed = false;
+    keyboardJS.bind('ctrl + 2', function(e) {
+        ctrl2Pressed = true;
+    });
+
+    keyboardJS.bind('ctrl + 0', function(e) {
+        if (ctrl2Pressed) {
+            console.log('Ctrl + 20 pressed!');
+            window.location.href = 'port20.php';
+        }
+        
+        ctrl2Pressed = false;
+    });
+
+    keyboardJS.bind('ctrl + 2', function(e) {
+        ctrl2Pressed = true;
+    });
+
+    keyboardJS.bind('ctrl + 1', function(e) {
+        if (ctrl2Pressed) {
+            console.log('Ctrl + 21 pressed!');
+            window.location.href = 'port21.php';
+        }
+     
+        ctrl2Pressed = false;
+    });
+
+    keyboardJS.bind('ctrl + 2', function(e) {
+        ctrl2Pressed = true;
+    });
+
+    keyboardJS.bind('ctrl + 3', function(e) {
+        if (ctrl2Pressed) {
+            console.log('Ctrl + 23 pressed!');
+            window.location.href = 'port23.php';
+        }
+
+        ctrl2Pressed = false;
+    });
+
+    keyboardJS.bind('ctrl + 2', function(e) {
+        ctrl2Pressed = true;
+    });
+
+    keyboardJS.bind('ctrl + 4', function(e) {
+        if (ctrl2Pressed) {
+            console.log('Ctrl + 24 pressed!');
+            window.location.href = 'port24.php';
+        }
+       
+        ctrl2Pressed = false;
+    });
+
+    keyboardJS.bind('ctrl + 2', function(e) {
+        ctrl2Pressed = true;
+    });
+
+    keyboardJS.bind('ctrl + 5', function(e) {
+        if (ctrl2Pressed) {
+            console.log('Ctrl + 25 pressed!');
+            window.location.href = 'port25.php';
+        }
+       
+        ctrl2Pressed = false;
+    });
+
+    keyboardJS.bind('ctrl + 2', function(e) {
+        ctrl2Pressed = true;
+    });
+
+    keyboardJS.bind('ctrl + 6', function(e) {
+        if (ctrl2Pressed) {
+            console.log('Ctrl + 26 pressed!');
+            window.location.href = 'port26.php';
+        }
+       
+        ctrl2Pressed = false;
+    });
+
+    keyboardJS.bind('ctrl + 2', function(e) {
+        ctrl2Pressed = true;
+    });
+
+    keyboardJS.bind('ctrl + 7', function(e) {
+        if (ctrl2Pressed) {
+            console.log('Ctrl + 27 pressed!');
+            window.location.href = 'port27.php';
+        }
+
+        ctrl2Pressed = false;
+    });
+
+    keyboardJS.bind('ctrl + 2', function(e) {
+        ctrl2Pressed = true;
+    });
+
+    keyboardJS.bind('ctrl + 8', function(e) {
+        if (ctrl2Pressed) {
+            console.log('Ctrl + 28 pressed!');
+            window.location.href = 'port28.php';
+        }
+        
+        ctrl2Pressed = false;
+    });
+
+    keyboardJS.bind('ctrl + 2', function(e) {
+        ctrl2Pressed = true;
+    });
+
+    keyboardJS.bind('ctrl + 9', function(e) {
+        if (ctrl2Pressed) {
+            console.log('Ctrl + 29 pressed!');
+            window.location.href = 'port29.php';
+        }
+        
+        ctrl2Pressed = false;
+    });
+
+</script>
+
+ <script src="keyboard.min.js"></script>
+ <script>
+
+        keyboardJS.setContext('index');
+        var ctrl3Pressed = false;
+    keyboardJS.bind('ctrl + 3', function(e) {
+        ctrl3Pressed = true;
+    });
+
+    keyboardJS.bind('ctrl + 0', function(e) {
+        if (ctrl3Pressed) {
+            console.log('Ctrl + 30 pressed!');
+            window.location.href = 'port30.php';
+        }
+        
+        ctrl3Pressed = false;
+    });
+
+    keyboardJS.bind('ctrl + 3', function(e) {
+        ctrl3Pressed = true;
+    });
+
+    keyboardJS.bind('ctrl + 1', function(e) {
+        if (ctrl3Pressed) {
+            console.log('Ctrl + 31 pressed!');
+            window.location.href = 'port31.php';
+        }
+       
+        ctrl3Pressed = false;
+    });
+
+    keyboardJS.bind('ctrl + 3', function(e) {
+        ctrl3Pressed = true;
+    });
+
+    keyboardJS.bind('ctrl + 2', function(e) {
+        if (ctrl3Pressed) {
+            console.log('Ctrl + 32 pressed!');
+            window.location.href = 'port32.php';
+        }
+
+        ctrl3Pressed = false;
+    });
+</script> 

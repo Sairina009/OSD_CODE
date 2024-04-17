@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Folder</title>
+</head>
+<body>
+    <h2>Select a Folder</h2>
+    <form id="folderForm" action="get_folder_path.php" method="post">
+        <label for="folder">Select a folder:</label>
+        <input type="file" id="folder" name="folder[]" webkitdirectory directory multiple>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        document.getElementById('folderForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            var folderInput = document.getElementById('folder');
+            var folderPath = folderInput.files[0].webkitRelativePath;
+
+            // Extract folder name from path
+            var folderName = folderPath.split('/')[0];
+
+            // Set the folder name and path to hidden input fields
+            var hiddenNameInput = document.createElement('input');
+            hiddenNameInput.setAttribute('type', 'hidden');
+            hiddenNameInput.setAttribute('name', 'folder_name');
+            hiddenNameInput.setAttribute('value', folderName);
+            this.appendChild(hiddenNameInput);
+
+            var hiddenPathInput = document.createElement('input');
+            hiddenPathInput.setAttribute('type', 'hidden');
+            hiddenPathInput.setAttribute('name', 'folder_path');
+            hiddenPathInput.setAttribute('value', folderPath);
+            this.appendChild(hiddenPathInput);
+
+            // Submit the form
+            this.submit();
+        });
+    </script>
+</body>
+</html>

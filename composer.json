@@ -1,0 +1,11 @@
+{
+    "name": "acclivis/htdocs",
+    "autoload": {
+        "psr-4": {
+            "Acclivis\\Htdocs\\": "src/"
+        }
+    },
+    "require": {
+        "php-ffmpeg/php-ffmpeg": "^1.1"
+    }
+}
