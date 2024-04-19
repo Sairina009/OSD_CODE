@@ -1,0 +1,629 @@
+-- MySQL dump 10.13  Distrib 8.0.36, for Linux (x86_64)
+--
+-- Host: localhost    Database: kvm
+-- ------------------------------------------------------
+-- Server version	8.0.36-0ubuntu0.20.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `board`
+--
+
+DROP TABLE IF EXISTS `board`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `board` (
+  `id` int NOT NULL,
+  `device` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `encoder_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `ip_address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `netmask` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `broadcast` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `board`
+--
+
+LOCK TABLES `board` WRITE;
+/*!40000 ALTER TABLE `board` DISABLE KEYS */;
+INSERT INTO `board` VALUES (1,'','10.1.1.1','192.168.1.1','',''),(2,'','20.1.1.1','170.1.1.2','',''),(3,'','30.1.1.1','160.1.1.1','',''),(4,'','40.1.1.1','150.1.1.1','',''),(5,'','50.1.1.1','140.1.1.1','',''),(1,'','encoder1','192.168.1.1','','');
+/*!40000 ALTER TABLE `board` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `connect`
+--
+
+DROP TABLE IF EXISTS `connect`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `connect` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `port_id` int DEFAULT NULL,
+  `portname` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  `decoder_name` varchar(255) DEFAULT NULL,
+  `decoder_id` int DEFAULT NULL,
+  `count` int DEFAULT NULL,
+  `user_authority` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `connect`
+--
+
+LOCK TABLES `connect` WRITE;
+/*!40000 ALTER TABLE `connect` DISABLE KEYS */;
+INSERT INTO `connect` VALUES (21,4,'','USER5',5,'',3,1,'Share','2024-04-17 10:50:21');
+/*!40000 ALTER TABLE `connect` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `decoder`
+--
+
+DROP TABLE IF EXISTS `decoder`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `decoder` (
+  `decoder_count` int NOT NULL,
+  `ip_address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `encoder_id` int NOT NULL,
+  `decoder_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `decoder_type` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `user_id` int NOT NULL,
+  `mac_address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `banner` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `thumbnailview` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `lastupdatedby` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `user_authority` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`decoder_count`),
+  KEY `encoder_id` (`encoder_id`),
+  CONSTRAINT `decoder_ibfk_1` FOREIGN KEY (`decoder_count`) REFERENCES `portname` (`id`),
+  CONSTRAINT `decoder_ibfk_2` FOREIGN KEY (`encoder_id`) REFERENCES `portname` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `decoder`
+--
+
+LOCK TABLES `decoder` WRITE;
+/*!40000 ALTER TABLE `decoder` DISABLE KEYS */;
+INSERT INTO `decoder` VALUES (1,'',1,'','',1,'','','','2024-04-18 06:32:00',''),(2,'',3,'','',2,'','','','2024-04-18 06:50:21','');
+/*!40000 ALTER TABLE `decoder` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `decoder_log`
+--
+
+DROP TABLE IF EXISTS `decoder_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `decoder_log` (
+  `decoder_id` int NOT NULL,
+  `table_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `column_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `new_value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `encoder_id` int DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
+  KEY `fk_encoder` (`encoder_id`),
+  CONSTRAINT `fk_encoder` FOREIGN KEY (`encoder_id`) REFERENCES `switch` (`encoder_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `decoder_log`
+--
+
+LOCK TABLES `decoder_log` WRITE;
+/*!40000 ALTER TABLE `decoder_log` DISABLE KEYS */;
+INSERT INTO `decoder_log` VALUES (4,'decoder','decoder_name','decoder4','2023-11-24 05:34:00',10,1),(2,'decoder','decoder_type','local','2023-11-24 06:11:06',11,2),(4,'decoder','thumbnailview','ON','2023-11-24 06:11:27',10,3),(4,'decoder','mac_address','01:12:4sd:d1:03:8d','2023-11-24 06:12:28',10,4),(2,'decoder','decoder_type','remote','2023-11-24 06:13:03',11,5),(2,'decoder','thumbnailview','OFF','2023-11-24 06:49:01',11,6),(1,'decoder','thumbnailview','OFF','2023-11-24 06:55:53',2,7),(4,'decoder','decoder_type','local','2023-11-24 11:03:07',10,8),(5,'decoder','encoder_id','13','2023-11-26 06:15:12',13,9),(4,'decoder','encoder_id','24','2023-11-26 06:15:12',24,10),(1,'decoder','encoder_id','1','2023-11-27 04:56:47',1,11),(1,'decoder','encoder_id','2','2023-11-27 05:03:36',2,12),(1,'decoder','encoder_id','3','2023-11-27 05:41:12',3,13),(1,'decoder','encoder_id','4','2023-11-27 05:41:45',4,14),(1,'decoder','encoder_id','5','2023-11-27 05:57:08',5,15),(1,'decoder','encoder_id','6','2023-11-27 06:08:05',6,16),(1,'decoder','encoder_id','1','2023-12-11 05:39:26',1,17),(3,'decoder','ip_address','168.1.1.3','2023-12-11 07:12:22',21,18),(4,'decoder','decoder_type','remote','2023-12-11 07:13:25',24,19),(1,'decoder','encoder_id','2','2023-12-15 05:01:07',2,20),(2,'decoder','encoder_id','3','2023-12-15 06:26:51',3,21),(1,'decoder','encoder_id','3','2023-12-15 06:27:30',3,22),(1,'decoder','encoder_id','1','2023-12-15 07:02:56',1,23),(2,'decoder','encoder_id','4','2023-12-15 07:03:11',4,24),(2,'decoder','encoder_id','2','2023-12-15 07:10:35',2,25);
+/*!40000 ALTER TABLE `decoder_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `decoder_status`
+--
+
+DROP TABLE IF EXISTS `decoder_status`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `decoder_status` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `decoder_id` int DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  `login_time` timestamp NULL DEFAULT NULL,
+  `logout_time` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `decoder_status`
+--
+
+LOCK TABLES `decoder_status` WRITE;
+/*!40000 ALTER TABLE `decoder_status` DISABLE KEYS */;
+INSERT INTO `decoder_status` VALUES (1,1,1,'2024-04-18 06:32:00',NULL),(2,2,2,'2024-04-18 06:38:11',NULL);
+/*!40000 ALTER TABLE `decoder_status` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `kvm_log`
+--
+
+DROP TABLE IF EXISTS `kvm_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `kvm_log` (
+  `kvm_id` int NOT NULL,
+  `table_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `column_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `new_value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `kvm_log`
+--
+
+LOCK TABLES `kvm_log` WRITE;
+/*!40000 ALTER TABLE `kvm_log` DISABLE KEYS */;
+INSERT INTO `kvm_log` VALUES (1,'kvmname1','name','KVM_RACK2111','2023-05-29 07:56:46'),(1,'kvmname1','time','2023 / 26 / 05 14:  29','2023-05-29 07:57:04'),(1,'kvmname1','language','French','2023-05-29 07:57:16'),(1,'kvmname1','language','English','2023-05-29 07:57:27'),(1,'kvmname1','hotkey','< Scroll Lock >','2023-05-29 07:57:33'),(1,'kvmname1','banner','OFF','2023-05-29 07:58:14'),(1,'kvmname1','encryp','Disable','2023-05-29 08:00:54'),(1,'kvmname1','encryp','AES','2023-05-29 08:01:05'),(1,'kvmname1','encryp','DES','2023-05-29 08:01:14'),(1,'kvmname1','encryp','3DES','2023-05-29 08:01:20'),(1,'kvmname','time','2023 / 06 / 10 12 :35','2023-10-06 06:47:58'),(1,'kvmname','time','2023 / 11 / 10 12 :35','2023-10-11 04:55:13'),(1,'kvmname','time','2023 / 12 / 10 17 :15','2023-10-12 11:19:08'),(1,'kvmname','time','2023 / 13 / 10 17 :15','2023-10-13 09:17:17'),(1,'kvmname','time','2023 / 16 / 10 12 :15','2023-10-16 05:23:03'),(1,'kvmname','time','2023 / 16 / 10 14 :15','2023-10-16 07:14:43'),(1,'kvmname','time','2023 / 16 / 10 15 :15','2023-10-16 09:06:17'),(1,'kvmname','time','2023 / 17 / 10 12 :15','2023-10-17 05:18:20'),(1,'kvmname','time','2023 / 17 / 10 16 :15','2023-10-17 09:22:00'),(1,'kvmname','time','2023 / 18 / 10 14 :15','2023-10-18 07:32:17'),(1,'kvmname','time','2023 / 19 / 10 13 :15','2023-10-19 06:17:02'),(1,'kvmname','time','2023 / 20 / 10 12 :15','2023-10-20 04:26:04'),(1,'kvmname','time','2023 / 23 / 10 12 :15','2023-10-23 07:08:22'),(1,'kvmname','time','2023 / 23 / 10 14 :15','2023-10-23 07:08:28'),(1,'kvmname','language','French','2023-10-25 07:34:34'),(1,'kvmname','hotkey','< Scroll Lock>','2024-02-25 12:05:54'),(1,'kvmname','hotkey','< Ctrl>','2024-02-25 12:06:10'),(1,'kvmname','time','2024 / 29 / 02 11 : 15','2024-02-29 04:54:45'),(1,'kvmname','language','French','2024-02-29 04:55:21'),(1,'kvmname','language','German','2024-02-29 04:59:13'),(1,'kvmname','language','French','2024-02-29 04:59:13'),(1,'kvmname','language','German','2024-02-29 05:05:21'),(1,'kvmname','kvmname','RACK1_KVM','2024-02-29 05:09:25'),(1,'kvmname','language','French','2024-02-29 05:10:56'),(1,'kvmname','language','German','2024-02-29 05:51:43'),(1,'kvmname','time','2024 / 04 / 03 11 : 15','2024-03-04 05:14:50'),(1,'kvmname','time','2024 / 04 / 03 14 : 15','2024-03-04 07:56:57');
+/*!40000 ALTER TABLE `kvm_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `kvmname`
+--
+
+DROP TABLE IF EXISTS `kvmname`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `kvmname` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `kvmname` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `language` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `banner` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `encryption` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `hotkey` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `path` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `lastUpdatedBy` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `bannertime` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `kvmname`
+--
+
+LOCK TABLES `kvmname` WRITE;
+/*!40000 ALTER TABLE `kvmname` DISABLE KEYS */;
+INSERT INTO `kvmname` VALUES (1,'RACK1_KVM2','English','ON','Disable','< Caps Lock>','2024 / 18 / 04 12 : 35','C:/xampp1/htdocs/user1 (2).sql','2024-04-18 06:50:59',8);
+/*!40000 ALTER TABLE `kvmname` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `logs`
+--
+
+DROP TABLE IF EXISTS `logs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `logs` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `action_made` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `event` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=531 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `logs`
+--
+
+LOCK TABLES `logs` WRITE;
+/*!40000 ALTER TABLE `logs` DISABLE KEYS */;
+INSERT INTO `logs` VALUES (1,11,'Logged out.','2023-02-26 21:31:29','Access Logout'),(2,11,'Logged in','2023-02-26 21:32:19','Access Login'),(3,3,'Logged in','2023-02-28 01:57:59','Access Login'),(4,3,'Logged out.','2023-02-28 01:58:07','Access Logout'),(5,5,'Logged in','2023-02-28 01:58:31','Access Login'),(6,16,'Logged in','2023-02-28 02:09:16','Access Login'),(7,16,'Logged out.','2023-02-28 02:09:20','Access Logout'),(8,5,'Logged in','2023-02-28 02:09:38','Access Login'),(9,8,'Logged in','2023-02-28 02:13:53','Access Login'),(10,8,'Logged out.','2023-02-28 03:50:38','Access Logout'),(11,5,'Logged in','2023-02-28 05:14:40','Access Login'),(12,5,'Logged out.','2023-02-28 05:55:55','Access Logout'),(13,11,'Logged in','2023-02-28 05:56:15','Access Login'),(14,11,'Logged out.','2023-02-28 05:59:21','Access Logout'),(15,4,'Logged in','2023-02-28 06:00:08','Access Login'),(16,4,'Logged out.','2023-02-28 06:00:16','Access Logout'),(17,15,'Logged in','2023-02-28 06:00:23','Access Login'),(18,15,'Logged out.','2023-02-28 06:00:25','Access Logout'),(19,5,'Logged in','2023-02-28 06:00:31','Access Login'),(20,5,'Logged out.','2023-02-28 19:24:25','Access Logout'),(21,12,'Logged in','2023-02-28 19:24:40','Access Login'),(22,12,'Logged out.','2023-02-28 19:24:46','Access Logout'),(23,6,'Logged in','2023-02-28 19:24:55','Access Login'),(24,6,'Logged out.','2023-02-28 19:24:58','Access Logout'),(25,11,'Logged in','2023-02-28 19:25:22','Access Login'),(26,1,'Logged in','2024-02-23 00:11:27','Access Login'),(27,1,'Logged in','2024-02-25 04:01:35','Access Login'),(28,1,'Logged in','2024-02-27 04:45:19','Access Login'),(29,1,'Logged in','2024-02-28 01:48:43','Access Login'),(30,1,'Logged in','2024-02-28 01:49:00','Access Login'),(31,1,'Logged in','2024-02-28 02:01:49','Access Login'),(32,1,'Logged in','2024-02-28 02:50:40','Access Login'),(33,1,'Logged in','2024-02-28 03:20:18','Access Login'),(34,1,'Logged in','2024-02-28 03:40:08','Access Login'),(35,1,'Logged in','2024-02-28 03:59:08','Access Login'),(36,1,'Logged in','2024-02-28 04:26:52','Access Login'),(37,1,'Logged in','2024-02-28 04:31:06','Access Login'),(38,1,'Logged in','2024-02-28 04:41:39','Access Login'),(39,1,'Logged in','2024-02-28 20:52:18','Access Login');
+/*!40000 ALTER TABLE `logs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `port_log`
+--
+
+DROP TABLE IF EXISTS `port_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `port_log` (
+  `port_id` int NOT NULL,
+  `table_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `column_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `new_value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `switch_id` int DEFAULT NULL,
+  KEY `fk_swi` (`switch_id`),
+  CONSTRAINT `fk_swi` FOREIGN KEY (`switch_id`) REFERENCES `switch` (`switch_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `port_log`
+--
+
+LOCK TABLES `port_log` WRITE;
+/*!40000 ALTER TABLE `port_log` DISABLE KEYS */;
+INSERT INTO `port_log` VALUES (10,'portname','resolution','640 * 480','2023-11-24 05:37:14',23),(1,'portname','linktype','StandardPort','2023-11-24 05:41:57',32),(5,'portname','framerate','60 fps','2023-11-24 06:43:13',28),(13,'portname','macaddr','06:42:4e:d2:03:2H','2023-11-24 06:46:40',20),(2,'portname','framerate','30 fps','2023-11-24 06:54:12',31),(2,'portname','framerate','60 fps','2023-11-24 07:00:36',31),(1,'portname','linktype','KvmSwitch','2023-11-24 07:15:45',32),(7,'portname','macaddr','06:42:4e:d1:03:2a','2023-11-24 07:20:23',26),(2,'portname','resolution','320 * 240','2023-11-24 07:47:11',31),(2,'portname','linktype','KvmSwitch','2023-11-24 07:50:14',31),(2,'portname','audio','Digital','2023-11-24 08:01:09',31),(10,'portname','macaddr','01:40:4e:d1:03:2a','2023-11-24 08:06:32',23),(14,'portname','macaddr','06:42:4e:d1:03:26','2023-11-24 08:15:50',19),(1,'portname','resolution','320 * 240','2023-11-24 08:33:56',32),(2,'portname','media','/opt/lampp/htdocs/','2023-11-24 08:35:51',31),(6,'portname','resolution','1920 * 1080','2023-11-24 08:36:47',27);
+/*!40000 ALTER TABLE `port_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `port_queue`
+--
+
+DROP TABLE IF EXISTS `port_queue`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `port_queue` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `portname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `decoder_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `request_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'waiting',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `port_queue`
+--
+
+LOCK TABLES `port_queue` WRITE;
+/*!40000 ALTER TABLE `port_queue` DISABLE KEYS */;
+INSERT INTO `port_queue` VALUES (1,1,'port1','','2024-04-16 13:48:59','waiting');
+/*!40000 ALTER TABLE `port_queue` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `portname`
+--
+
+DROP TABLE IF EXISTS `portname`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `portname` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `portname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `userauthority` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `ip_address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `macaddr` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `type` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `pc_online` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `linktype` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `audio` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `version` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `media` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `format` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `resolution` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `framerate` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `connect` int NOT NULL,
+  `decoder_name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `status` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `lastupdatedby` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `upgrade` int NOT NULL,
+  `path` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `enable1` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `enable2` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `enable3` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `enable4` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `enable5` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `enable6` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `enable7` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `enable8` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `enable9` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `enable10` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `enable11` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `enable12` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `enable13` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `enable14` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `enable15` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `enable16` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `scan1` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `scan2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `scan3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `scan4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `scan5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `scan6` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `scan7` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `scan8` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `scan9` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `scan10` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `scan11` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `scan12` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `scan13` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `scan14` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `scan15` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `scan16` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `a1` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `a2` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `a3` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `a4` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `a5` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `a6` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `a7` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `a8` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `a9` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `a10` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `a11` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `a12` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `a13` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `a14` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `a15` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `a16` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `switch_id` int DEFAULT NULL,
+  `decoder_count` int DEFAULT NULL,
+  `image_data` blob,
+  `image_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `view_only` tinyint(1) NOT NULL DEFAULT '0',
+  `aesportname` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `desportname` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `3desportname` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `switch_id` (`switch_id`),
+  KEY `decoder_count` (`decoder_count`),
+  CONSTRAINT `portname_ibfk_1` FOREIGN KEY (`switch_id`) REFERENCES `switch` (`switch_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `portname`
+--
+
+LOCK TABLES `portname` WRITE;
+/*!40000 ALTER TABLE `portname` DISABLE KEYS */;
+INSERT INTO `portname` VALUES (1,'Encoder1',NULL,NULL,'192.168.1.1','06:42:4e:d1:03:2l','HDMI-CIM','Yes','KvmSwitch','Analog','2.0.0.2010','/acclivis/home/2','Stereo, 48KHz','3840 * 2160','60 fps',0,'','busy','2024-04-18 09:00:47',1,'C:/xampp1/htdocs/kvm.sql','on','on','on','','','on','on','on','on','on','on','on','on','on','on','on','s','','','s','s','s','s','s','s','s','s','s','s','s','s','s','Share','View','Share','Share','View','View','View','View','Share','Share','Share','View','View','Share','Share','View',32,1,NULL,'port1.jpg',0,'dH04XHS07ZJfoBJnGbb6rQ==','dK6QjCkSZFt+4t9lq5w5AQ==','F5szB2V7rqzVF4mhnlthCA==\n'),(2,'encoder2',NULL,NULL,'170.1.1.2','06:42:4e:d1:03:2g','DP-CIM','Yes','KvmSwitch','Digital','2.0.0.2010','/opt/lampp/htdocs/','Mono, 48KHz','1920 * 1080','15 fps',0,'','busy','2024-04-17 07:20:40',1,'C:/xampp1/htdocs/check_authority.php','on','','on','on','on','','on','on','on','on','on','on','on','on','','on','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','Share','Share','View','Share','Share','Share','Share','Share','View','View','Share','Share','View','View','View','Share',31,1,NULL,'port2.jpg',0,'',NULL,''),(3,'encoder3',NULL,NULL,'160.1.1.1','01:42:4e:d1:03:2d','HDMI-CIM','Yes','KvmSwitch','Digital','2.0','/opt/lampp/htdocs/','Stereo, 48KHz','1920 * 1080','15 fps',0,'','busy','2024-04-18 07:51:46',1,'C:/xampp1/htdocs/index.html','on','on','','on','','on','on','on','on','on','on','on','on','on','on','on','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','View','View','Share','View','View','View','Share','View','View','Share','View','Share','Share','Share','Share','Share',30,2,NULL,'port3.jpg',0,'',NULL,''),(4,'encoder4',NULL,NULL,'150.1.1.1','09:42:4e:d1:03:2w','HDMI-CIM','Yes','StandardPort','Digital','2.0.0.2010','/opt/lampp/htdocs/key.html','Mono, 48KHz','640 * 480','30 fps',0,'','busy','2024-04-18 07:45:13',1,'C:/xampp1/htdocs/Order_ID_5030927518.pdf','on','on','','on','on','on','on','on','on','on','on','on','on','on','on','','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share',29,2,NULL,'port4.jpg',1,'',NULL,''),(5,'portname5',NULL,NULL,'140.1.1.1','16:42:4e:d7:03:2f','DP-CIM','Yes','KvmSwitch','Analog','2.0.0.2010','/opt/lampp/htdocs/','Stereo, 48KHz','1920 * 1080','15 fps',0,'','busy','2024-04-17 10:50:01',0,'','','on','on','on','on','on','','on','on','on','on','on','on','on','on','on','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','Share','Share','Share','Share','Share','Share','View','Share','Share','View','View','View','View','Share','Share','Share',28,3,NULL,'port5.jpg',0,'Pat9IHFlWMxpGLrAZ2uBTg==','hTF7YjKRaw+I4Bj73KmjiA==','Tqhjv0E9ohYBbtlZuAKwfA==\n'),(6,'encoder6',NULL,NULL,'10.5.5.2','06:42:4e:d1:03:2a','HDMI-CIM','Yes','KvmSwitch','Analog','2.0.0.2','/opt/lampp/htdocs/','Stereo, 96KHz','1920 * 1080','30 fps',0,'','busy','2024-04-17 10:39:37',1,'C:/xampp1/htdocs/app.py','on','','','on','on','','on','on','on','on','on','on','on','on','on','','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','Share','View','View','Share','Share','Share','Share','Share','View','Share','Share','Share','Share','Share','Share','Share',27,1,NULL,'port6.jpg',0,'',NULL,''),(7,'encoder7',NULL,NULL,'10.5.5.2','06:42:4e:d1:03:2a','HDMI-CIM','Yes','KvmSwitch','Analog','2.0.0.2010','/opt/lampp/htdocs/','Stereo, 96KHz','1280 * 720','60 fps',0,'','busy','2024-04-18 06:50:14',1,'C:/xampp1/htdocs/app.py','','on','on','','on','','on','on','on','on','on','on','on','on','on','','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','Share','Share','View','View','Share','Share','View','Share','Share','Share','Share','Share','Share','Share','Share','Share',26,1,NULL,'port7.jpg',0,'',NULL,''),(8,'encoder8',NULL,NULL,'10.5.5.2','06:42:4e:d1:06:2e','DP-CIM','Yes','Standard Port','Digital','2.0.0.2010','/opt/lampp/htdocs/','Stereo, 96KHz','320 * 240','60 fps',0,'','busy','2024-04-17 10:39:37',1,'C:/xampp1/htdocs/kvmnew.sql','on','','on','on','','on','on','on','on','on','on','on','on','on','on','on','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','View','Share','Share','View','Share','Share','Share','View','View','Share','Share','Share','Share','Share','Share','Share',25,1,NULL,'port8.jpg',0,'',NULL,''),(9,'encoder9',NULL,NULL,'10.5.5.2','06:42:4e:d1:03:2H','HDMI-CIM','Yes','Standard Port','OFF','2.0.0.2010','/opt/lampp/var/','Stereo, 96KHz','1280 * 720','30 fps',0,'','idle','2024-04-17 07:16:10',0,'','on','','on','on','','on','','','','','','','on','on','','','','s','','','','s','','','','','','s','','s','s','','Share','Share','Share','Share','Share','View','Share','Share','Share','Share','View','Share','Share','Share','Share','Share',24,NULL,NULL,'/home/acclivis/Desktop/images/port9.jpg',0,'',NULL,''),(10,'encoder10',NULL,NULL,'12.2.2.2','01:40:4e:d1:03:2a','HDMI-CIM','Yes','KvmSwitch','Analog','2.0.0.2010','/opt/lampp/htdocs/','Stereo, 96KHz','640 * 480','30 fps',0,'','idle','2024-04-17 07:17:03',0,'','on','','on','','','','on','on','','','on','','','','','on','','s','','','','s','','','','','s','','s','','s','','Share','View','Share','Share','Share','Share','Share','Share','Share','Share','Share','View','View','Share','View','Share',23,NULL,NULL,'/home/acclivis/Desktop/images/port10.jpg',0,'',NULL,''),(11,'encoder11',NULL,NULL,'12.2.2.2','06:42:4e:d1:03:2s','HDMI-CIM','Yes','Standard Port','Digital','2.0.0.2010','/opt/lampp/htdocs/','Stereo, 96KHz','320 * 240','60 fps',0,'','busy','2024-04-17 07:14:59',0,'','on','on','on','','','on','','','','','','on','on','on','on','','','s','','','s','','s','','s','','','s','','s','','','View','View','Share','Share','View','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share',22,2,NULL,'/home/acclivis/Desktop/images/port11.jpg',0,'',NULL,''),(12,'encoder12',NULL,NULL,'12.2.2.2','06:42:4e:d1:01:2H','DP-CIM','','Standard Port','Analog','2.0.0.2010','/opt/lampp/var/','Stereo, 96KHz','320 * 240','15 fps',0,'','idle','2024-04-17 07:17:01',1,'C:/xampp1/htdocs/','','','on','on','on','','','','','on','','on','','','on','on','','s','','','','','s','s','','','s','s','','s','','','Share','Share','View','View','View','Share','Share','Share','Share','View','Share','Share','Share','Share','View','Share',21,NULL,NULL,'/home/acclivis/Desktop/images/port12.jpg',0,'',NULL,''),(13,'encoder13',NULL,NULL,'12.2.2.2','06:42:4e:d2:03:2H','HDMI-CIM','','KvmSwitch','Digital','2.0.0.2010','/opt/lampp/htdocs/','Stereo, 96KHz',' 800 * 600','30 fps',0,'','idle','2024-04-17 07:16:20',1,'C:/xampp1/htdocs/check_authority.php','','on','','','','','','','','','on','on','on','on','','','s','','','','','s','','s','','s','','','','s','','','View','Share','Share','Share','Share','View','View','View','Share','Share','View','View','Share','Share','Share','Share',20,NULL,NULL,'/home/acclivis/Desktop/images/port13.jpg',0,'',NULL,''),(14,'encoder14',NULL,NULL,'12.2.2.2','06:42:4e:d1:03:26','HDMI-CIM','Yes','Standard Port','Analog','2.0.0.2010','/opt/lampp/var/','Stereo, 96KHz','1280 * 720','15 fps',0,'decoder1','idle','2024-04-17 07:16:03',0,'','on','','','','','','','on','','on','','on','','','on','','s','','','','','','','','','s','','s','s','','s','','Share','Share','Share','Share','Share','Share','Share','Share','Share','View','Share','Share','Share','Share','Share','Share',19,NULL,NULL,'/home/acclivis/Desktop/images/port14.jpg',0,'',NULL,''),(15,'encoder15',NULL,NULL,'12.2.2.2','06:42:4e:d1:03:2H','HDMI-CIM','Yes','Standard Port','Digital','2.0.0.2010','/opt/lampp/htdocs/','Stereo, 96KHz','320 * 240','60 fps',0,'','idle','2024-04-18 07:39:00',1,'C:/xampp1/htdocs/kvm.sql','on','','','','','','','','','on','','','on','on','','on','s','s','','','','','','','','','','s','','','s','s','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share',18,NULL,NULL,'/home/acclivis/Desktop/images/port15.jpg',0,'',NULL,''),(16,'encoder16',NULL,NULL,'12.2.2.2','06:42:4e:d1:03:2H','HDMI-CIM','Yes','Standard Port','Analog','2.0.0.2010','/opt/lampp/htdocs/','Stereo, 96KHz','1920 * 1080','60 fps',0,'','idle','2024-04-17 07:17:14',1,'C:/xampp1/htdocs/kvm.sql','on','','','','','','on','','on','','','on','','','','','s','','','','','','','','','','','s','s','','','s','Share','Share','View','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','View',17,NULL,NULL,'/home/acclivis/Desktop/images/port16.jpg',0,'',NULL,''),(17,'encoder17',NULL,NULL,'12.2.2.2','06:42:4e:d1:03:2H','DP-CIM','','Standard Port','Digital','2.0.0.2010','/opt/lampp/var/','Stereo, 96KHz','1280 * 720','30 fps',0,'','idle','2024-04-17 07:17:10',0,'','','','','on','on','','','','on','on','','','on','','on','','','s','','','','','','','','','s','s','s','','s','','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','View','View',16,NULL,NULL,'/home/acclivis/Desktop/images/port17.jpg',0,'',NULL,''),(18,'encoder18',NULL,NULL,'12.2.2.2','06:42:4e:d1:03:2H','HDMI-CIM','Yes','KvmSwitch','Analog','2.0.0.2010','/opt/lampp/htdocs/','Stereo, 96KHz','3840 * 2160','60 fps',0,'decoder1','idle','2024-04-17 07:13:34',0,'','','on','','','','','','on','on','','','','on','','on','on','s','','','','','s','','','','','s','s','','','','','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share',15,NULL,NULL,'/home/acclivis/Desktop/images/port18.jpg',0,'',NULL,''),(19,'encoder19',NULL,NULL,'12.2.2.2','16:42:4e:d1:03:2j','DP-CIM','','Standard Port','Digital','2.0.0.2010','/opt/lampp/var/','Stereo, 96KHz','640 * 480','15 fps',0,'','idle','2024-04-17 07:13:34',0,'','on','','','on','on','','','','','on','','','','','','','s','','','s','s','s','','','s','','s','','','','','','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share',14,NULL,NULL,'/home/acclivis/Desktop/images/port19.jpg',0,'',NULL,''),(20,'encoder20',NULL,NULL,'12.2.2.2','06:42:4e:d1:03:2H','HDMI-CIM','','Standard Port','Analog','2.0.0.2010','/opt/lampp/var/','Stereo, 96KHz','640 * 480','60 fps',0,'','idle','2024-04-17 07:13:34',0,'','on','','','','','','on','on','','on','on','','','','on','on','s','','s','s','s','s','s','s','','','s','','','','','','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share',13,NULL,NULL,'/home/acclivis/Desktop/images/port20.jpg',0,'0poorN/t3GbKBYnjFJWoOA==','fKxdmqduUXD/BMTACv5Ytw==','LRXd+iCfLSyNUFxSVkfCQg==\n'),(21,'encoder21',NULL,NULL,'12.2.2.2','10:42:4e:d1:03:2d','HDMI-CIM','','KvmSwitch','Digital','2.0.0.2010','/opt/lampp/var/','Stereo, 96KHz','320 * 240','15 fps',0,'','idle','2024-04-17 07:13:34',0,'','on','','','','','on','on','','','on','','','','','','','','','','','','','s','','','s','','s','s','s','','','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share',12,NULL,NULL,'/home/acclivis/Desktop/images/port21.jpg',0,'',NULL,''),(22,'encoder22',NULL,NULL,'12.2.2.2','06:42:4e:d1:03:2H','HDMI-CIM','Yes','Standard Port','OFF','2.0.0.2010','/opt/lampp/htdocs/','Stereo, 96KHz','640 * 480','60 fps',0,'','idle','2024-04-18 07:09:59',1,'C:/xampp1/htdocs/user.php','on','','','','','','','','','on','','on','on','on','','','','s','','','','','','s','','','s','s','s','','s','','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share',11,NULL,NULL,'/home/acclivis/Desktop/images/port22.jpg',0,'',NULL,''),(23,'encoder23',NULL,NULL,'12.2.2.2','06:42:4e:d1:03:2H','DP-CIM','Yes','Standard Port','Digital','2.0.0.2010','/opt/lampp/htdocs/','Mono, 44.1KHz','1280 * 720','60 fps',0,'','idle','2024-04-17 07:13:34',0,'','on','','','','on','','','','on','','','on','','','','','s','','','','s','','','','','s','','s','','','','s','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share',10,NULL,NULL,'/home/acclivis/Desktop/images/port23.jpg',0,'',NULL,''),(24,'encoder24',NULL,NULL,'12.2.2.2','06:42:4e:d1:03:2H','HDMI-CIM','Yes','Standard Port','Digital','2.0.0.2010','/opt/lampp/var/','Stereo, 96KHz','3840 * 2160','30 fps',0,'','idle','2024-04-17 07:13:34',1,'C:/xampp1/htdocs/index.html','on','','','','','','','','','','on','','','on','','','s','','','','','','','','','s','','s','s','s','','','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share',9,NULL,NULL,'/home/acclivis/Desktop/images/port24.jpg',0,'',NULL,''),(25,'encoder25',NULL,NULL,'12.2.2.2','06:42:4e:d1:03:2H','HDMI-CIM','','Standard Port','Analog','2.0.0.2010','/opt/lampp/var/','Stereo, 96KHz','1280 * 720','15 fps',0,'','busy','2024-04-17 10:39:37',1,'C:/xampp1/htdocs/index.html','','on','','','','','on','','on','','','','on','on','on','','','','','s','','','s','','s','s','','','s','','s','','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share',8,1,NULL,'/home/acclivis/Desktop/images/port25.jpg',0,'',NULL,''),(26,'encoder26',NULL,NULL,'12.2.2.2','06:42:4e:d1:03:2H','HDMI-CIM','','Standard Port','Analog','2.0.0.2010','/opt/lampp/var/','Stereo, 96KHz','3840 * 2160','60 fps',0,'','idle','2024-04-17 07:13:34',1,'C:/xampp1/htdocs/user.php','on','','','','','','on','on','','on','on','on','','','','','','','s','','','','s','s','s','','','s','','s','','','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share',7,NULL,NULL,'/home/acclivis/Desktop/images/port26.jpg',0,'',NULL,''),(27,'encoder27',NULL,NULL,'12.2.2.2','06:42:4e:d1:03:2H','HDMI-CIM','','Standard Port','Analog','2.0.0.2010','/opt/lampp/var/','Stereo, 96KHz','640 * 480','60 fps',0,'','idle','2024-04-17 07:17:16',0,'','','','','','','','','','','','on','','on','','on','','','','','','','s','s','s','','s','s','','s','','','','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','View',6,NULL,NULL,'/home/acclivis/Desktop/images/port27.jpg',0,'',NULL,''),(28,'encoder28',NULL,NULL,'12.2.2.2','06:42:4e:d1:03:2H','HDMI-CIM','','Standard Port','Analog','2.0.0.2010','/opt/lampp/var/','Stereo, 96KHz','1920 * 1080','60 fps',0,'','idle','2024-04-17 07:16:58',0,'','','on','','','','','','','on','on','','on','','','','','s','','','','','','','','','s','s','s','s','','','s','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','View','View','Share',5,NULL,NULL,'/home/acclivis/Desktop/images/port28.jpg',0,'',NULL,''),(29,'encoder29',NULL,NULL,'12.2.2.2','06:42:4e:d1:03:2H','HDMI-CIM','','Standard Port','Analog','2.0.0.2010','/opt/lampp/var/','Stereo, 96KHz','640 * 480','60 fps',0,'','idle','2024-04-17 07:13:34',1,'C:/xampp1/htdocs/uheader.php','on','on','on','','','','','','','','','on','','','','on','','','s','','s','','s','s','','s','','s','','','','','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share',4,NULL,NULL,'/home/acclivis/Desktop/images/port29.jpg',0,'',NULL,''),(30,'encoder30',NULL,NULL,'12.2.2.2','06:42:4e:d1:03:2H','HDMI-CIM','','Standard Port','Analog','2.0.0.2010','/opt/lampp/htdocs/2','Stereo, 96KHz','1920 * 1080','60 fps',0,'','idle','2024-04-18 07:10:18',0,'','on','','','','','','','','','','','','on','','','','s','s','','','','','s','','','','','s','s','s','','','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share',3,NULL,NULL,'/home/acclivis/Desktop/images/port30.jpg',0,'',NULL,''),(31,'encoder31',NULL,NULL,'12.2.2.2','06:42:4e:d1:03:2H','HDMI-CIM','','Standard Port','Analog','2.0.0.2010','/opt/lampp/var/','Stereo, 96KHz','640 * 480','60 fps',0,'','idle','2024-04-17 07:13:34',0,'','','','','','','','on','','','on','','','on','on','','','s','','','','','','','s','','s','','s','','s','','','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share',2,NULL,NULL,'/home/acclivis/Desktop/images/port31.jpg',0,'',NULL,''),(32,'encoder32',NULL,NULL,'12.2.2.2','06:42:4e:d1:03:2H','HDMI-CIM','','Standard Port','Analog','2.0.0.2010','/opt/lampp/var/','Stereo, 96KHz','1920 * 1080','60 fps',0,'','idle','2024-04-17 07:16:47',0,'','','on','','','','on','','','','','on','','on','','','','','','','s','','','','','','s','','','s','s','','','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','Share','View','Share','Share',1,NULL,NULL,'/home/acclivis/Desktop/images/port32.jpg',0,'',NULL,'');
+/*!40000 ALTER TABLE `portname` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `switch`
+--
+
+DROP TABLE IF EXISTS `switch`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `switch` (
+  `switch_id` int NOT NULL AUTO_INCREMENT,
+  `encoder_id` int NOT NULL,
+  `kvm_type` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `kvm_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `lastupdatedby` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`switch_id`),
+  KEY `fk_switch` (`encoder_id`),
+  CONSTRAINT `fk_switch` FOREIGN KEY (`encoder_id`) REFERENCES `portname` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `switch`
+--
+
+LOCK TABLES `switch` WRITE;
+/*!40000 ALTER TABLE `switch` DISABLE KEYS */;
+INSERT INTO `switch` VALUES (1,32,'Standard Port','Rack2023','2023-11-24 05:02:51'),(2,31,'Standard Port','Rack2023','2023-11-24 05:02:51'),(3,30,'Standard Port','oct','2023-11-24 10:49:16'),(4,29,'Kvm Switch','Rack2023','2023-11-24 09:58:09'),(5,28,'Standard Port','Rack2023','2023-11-24 05:02:51'),(6,27,'Standard Port','Rack2023','2023-11-24 05:02:51'),(7,26,'Standard Port','Rack2023','2023-11-24 05:02:51'),(8,25,'kvm','Rack2023','2023-11-24 11:55:50'),(9,24,'Standard Port','oct','2023-11-24 10:08:41'),(10,23,'Kvm Switch','Rack2023','2023-11-24 06:06:00'),(11,22,'Standard Port','Rack2023','2023-11-24 05:02:51'),(12,21,'Standard Port','Rack2023','2023-11-24 05:02:51'),(13,20,'kvm','Rack2023','2023-11-24 11:59:08'),(14,19,'Standard Port','oct','2023-11-24 10:53:59'),(15,18,'Standard Port','Rack2023','2023-11-24 05:02:51'),(16,17,'Kvm Switch','Rack_oct','2023-11-24 06:06:54'),(17,16,'Standard Port','kkkkk','2023-11-24 11:05:45'),(18,15,'oct','Rack2023','2023-11-24 12:01:33'),(19,14,'Standard Port','Rack2023','2023-11-24 05:02:51'),(20,13,'Standard Port','Rackoct','2023-11-24 06:46:25'),(21,12,'Standard Port','Rack2023','2023-11-24 05:02:51'),(22,11,'Standard Port','oct','2023-11-24 06:48:04'),(23,10,'Kvm switch','kvm_13','2024-01-09 10:01:00'),(24,9,'Standard Port','Rack2023','2023-11-24 05:02:51'),(25,8,'Standard Port','oct','2023-11-24 12:06:18'),(26,7,'Standard Port','Rack2023','2023-11-24 05:02:51'),(27,6,'Standard Port','Rack2023','2023-11-24 05:02:51'),(28,5,'Standard Port','Rack2023','2023-11-24 05:02:51'),(29,4,'Kvm Switch','Rack2023','2023-11-24 06:08:57'),(30,3,'Standard Port','Rack2023','2023-11-24 05:02:51'),(31,2,'Kvm Switch','oct','2023-11-24 07:04:13'),(32,1,'Kvm Switch','Rack2023','2023-11-24 06:09:36');
+/*!40000 ALTER TABLE `switch` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `switch_log`
+--
+
+DROP TABLE IF EXISTS `switch_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `switch_log` (
+  `switch_id` int NOT NULL,
+  `table_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `column_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `new_value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `encoder_id` int DEFAULT NULL,
+  KEY `fk_enco` (`encoder_id`),
+  CONSTRAINT `fk_enco` FOREIGN KEY (`encoder_id`) REFERENCES `portname` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `switch_log`
+--
+
+LOCK TABLES `switch_log` WRITE;
+/*!40000 ALTER TABLE `switch_log` DISABLE KEYS */;
+INSERT INTO `switch_log` VALUES (23,'switch','kvm_type','Kvm seitch','2023-11-24 05:36:32',10),(16,'switch','kvm_name','Rack_oct','2023-11-24 06:01:26',17),(23,'switch','kvm_type','Kvm switch','2023-11-24 06:05:32',10),(10,'switch','kvm_type','Kvm Switch','2023-11-24 06:06:00',23),(16,'switch','kvm_type','Kvm Switch','2023-11-24 06:06:54',17),(29,'switch','kvm_type','Kvm Switch','2023-11-24 06:08:57',4),(32,'switch','kvm_type','Kvm Switch','2023-11-24 06:09:36',1),(20,'switch','kvm_name','Rackoct','2023-11-24 06:46:25',13),(22,'switch','kvm_name','oct','2023-11-24 06:48:04',11),(31,'switch','kvm_type','Kvm Switch','2023-11-24 06:57:37',2),(31,'switch','kvm_name','oct','2023-11-24 07:04:13',2),(4,'switch','kvm_type','Kvm Switch','2023-11-24 09:58:09',29),(9,'switch','kvm_name','oct','2023-11-24 10:08:41',24),(18,'switch','kvm_type','kvm switch','2023-11-24 10:42:46',15),(3,'switch','kvm_name','oct','2023-11-24 10:49:16',30),(18,'switch','kvm_type','Standard Port','2023-11-24 10:51:31',15),(14,'switch','kvm_name','oct','2023-11-24 10:53:59',19),(17,'switch','kvm_name','kkkkk','2023-11-24 11:05:45',16),(8,'switch','kvm_type','kvm','2023-11-24 11:55:50',25),(13,'switch','kvm_type','kvm','2023-11-24 11:59:08',20),(18,'switch','kvm_type','oct','2023-11-24 12:01:33',15),(25,'switch','kvm_name','oct','2023-11-24 12:06:18',8),(23,'switch','kvm_name','kvm_13','2024-01-09 10:01:00',10);
+/*!40000 ALTER TABLE `switch_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `trigger_log`
+--
+
+DROP TABLE IF EXISTS `trigger_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `trigger_log` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `trigger_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `event_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `trigger_log`
+--
+
+LOCK TABLES `trigger_log` WRITE;
+/*!40000 ALTER TABLE `trigger_log` DISABLE KEYS */;
+INSERT INTO `trigger_log` VALUES (1,'user_trigger','2024-02-23 08:13:04'),(2,'portname_trigger','2024-02-23 09:06:48'),(3,'portname_trigger','2024-02-23 09:06:53'),(4,'portname_trigger','2024-02-23 09:07:56'),(5,'user_trigger','2024-02-23 09:09:58'),(6,'portname_trigger','2024-02-23 09:10:42'),(7,'portname_trigger','2024-02-23 09:10:51'),(8,'portname_trigger','2024-02-23 09:12:38'),(9,'portname_trigger','2024-02-23 09:12:38'),(10,'portname_trigger','2024-02-23 09:12:47'),(11,'portname_trigger','2024-02-23 09:12:53'),(12,'portname_trigger','2024-02-25 12:04:06'),(13,'portname_trigger','2024-02-25 12:04:06'),(14,'portname_trigger','2024-02-25 12:04:12'),(15,'portname_trigger','2024-02-25 12:04:17'),(16,'portname_trigger','2024-02-25 12:04:46'),(17,'portname_trigger','2024-02-25 12:04:58'),(18,'portname_trigger','2024-02-25 12:05:04'),(19,'portname_trigger','2024-02-25 12:05:09');
+/*!40000 ALTER TABLE `trigger_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `upgradehistory`
+--
+
+DROP TABLE IF EXISTS `upgradehistory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `upgradehistory` (
+  `no` int NOT NULL AUTO_INCREMENT,
+  `type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `user` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `starttime` datetime NOT NULL,
+  `endtime` datetime NOT NULL,
+  `perversion` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `upgradeversion` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `result` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `path` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`no`)
+) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `upgradehistory`
+--
+
+LOCK TABLES `upgradehistory` WRITE;
+/*!40000 ALTER TABLE `upgradehistory` DISABLE KEYS */;
+INSERT INTO `upgradehistory` VALUES (1,'Dongle FW Upgrade',' USER3 ','2023-04-11 11:28:31','2023-04-11 11:34:11','2.0.0.2010','','successful','C:/xampp1/htdocs/'),(2,'Dongle FW Upgrade',' USER3 ','2023-04-11 11:28:31','2023-04-11 11:34:11','2.0.0.2010','','successful','C:/xampp1/htdocs/'),(3,'Dongle FW Upgrade',' USER3 ','2023-04-11 11:28:31','2023-04-11 11:34:11','2.0.0.2010','','successful','C:/xampp1/htdocs/dongleupgrade2.php'),(4,'Dongle FW Upgrade',' USER3 ','2023-04-11 11:28:31','2023-04-11 11:34:11','2.0.0.2010','','successful',''),(5,'Dongle FW Upgrade',' USER3 ','2023-04-11 11:28:31','2023-04-11 11:34:11','2.0.0.2010','','successful','C:/xampp1/htdocs/upload.php'),(6,'Dongle FW Upgrade',' USER3 ','2023-04-11 11:28:31','2023-04-11 11:34:11','2.0.0.2010','','successful','C:/xampp1/htdocs/demo.php'),(7,'Dongle FW Upgrade',' USER3 ','2023-04-11 11:28:31','2023-04-11 11:34:11','2.0.0.2010','','successful','C:/xampp1/htdocs/DBConnection.php'),(8,'Dongle FW Upgrade',' USER3 ','2023-04-11 11:28:31','2023-04-11 11:34:11','2.0.0.2010','','successful','C:/xampp1/htdocs/style.css'),(9,'Dongle FW Upgrade',' USER3 ','2023-04-11 11:28:31','2023-04-11 11:34:11','2.0.0.2010','','successful','C:/xampp1/htdocs/upload.php'),(10,'Dongle FW Upgrade',' USER3 ','2023-04-11 11:28:31','2023-04-11 11:34:11','2.0.0.2010','','successful','C:/xampp1/htdocs/virtualmedia.php'),(11,'Dongle FW Upgrade',' USER3 ','2023-04-11 11:28:31','2023-04-11 11:34:11','2.0.0.2010','','successful','C:/xampp1/htdocs/Actions_audit.php'),(12,'Dongle FW Upgrade',' USER3 ','2023-04-11 11:28:31','2023-04-11 11:34:11','2.0.0.2010','','successful','C:/xampp1/htdocs/'),(13,'Dongle FW Upgrade',' USER3 ','2023-04-11 11:28:31','2023-04-11 11:34:11','2.0.0.2010','','successful','C:/xampp1/htdocs/'),(14,'Dongle FW Upgrade',' USER3 ','2023-04-11 11:28:31','2023-04-11 11:34:11','2.0.0.2010','','successful','C:/xampp1/htdocs/');
+/*!40000 ALTER TABLE `upgradehistory` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_log`
+--
+
+DROP TABLE IF EXISTS `user_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user_log` (
+  `user_id` int NOT NULL,
+  `table_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `column_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `new_value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_log`
+--
+
+LOCK TABLES `user_log` WRITE;
+/*!40000 ALTER TABLE `user_log` DISABLE KEYS */;
+INSERT INTO `user_log` VALUES (11,'user1','authority','User','2023-05-29 07:50:04'),(3,'user1','active','1','2023-05-29 07:50:21'),(10,'user1','uname','user10','2023-05-29 07:50:43'),(7,'user1','mass','','2023-05-29 07:51:07'),(8,'user1','mass','','2023-05-29 07:51:07'),(15,'user1','mass','','2023-05-29 07:51:07'),(6,'user1','uname','USER6','2023-05-31 05:04:15'),(6,'user1','active','1','2023-05-31 05:13:33'),(1,'user1','uname','user1','2023-05-31 12:02:02'),(1,'username','view','ON','2023-11-20 05:29:21'),(1,'username','view','OFF','2023-11-20 05:39:58'),(1,'username','view','ON','2023-11-20 11:33:47'),(2,'username','view','ON','2023-11-20 11:33:47'),(3,'username','view','ON','2023-11-20 11:33:47'),(4,'username','view','ON','2023-11-20 11:33:47'),(5,'username','view','ON','2023-11-20 11:33:47'),(6,'username','view','ON','2023-11-20 11:33:47'),(7,'username','view','ON','2023-11-20 11:33:47'),(8,'username','view','ON','2023-11-20 11:33:47'),(9,'username','view','ON','2023-11-20 11:33:47'),(10,'username','view','ON','2023-11-20 11:33:47');
+/*!40000 ALTER TABLE `user_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `username`
+--
+
+DROP TABLE IF EXISTS `username`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `username` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `aesname` text CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
+  `desname` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `3desname` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `aespass` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `despass` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `3despass` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `active` int NOT NULL,
+  `authority` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `username` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `password` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `view` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `hid` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `mass` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `card` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `virtual` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `lastUpdatedBy` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `username`
+--
+
+LOCK TABLES `username` WRITE;
+/*!40000 ALTER TABLE `username` DISABLE KEYS */;
+INSERT INTO `username` VALUES (1,'39ECqzRcvCL6lkFsRRLwMA==','DZFChS19WJ8=','ZOzCZDBJmoE=','5FtMB7azcO5eWnBzjW16Kg==','pwjqEguZCkY+n36dJGmnXA==','c8HNkEynNj+4qewzjNi3qw==',1,'Admin','Admin','Admin@123','OFF','on','','on','on','2024-04-17 10:37:01'),(2,'hYW19r7ibxV/fY3fkNLYQw==','NM0ufMi7JW8=','C9DNFNcY9ME=','9R6qXV199LHiLvc=','€š¾bãï÷a2Æò?)Ž´','6M0pao9hrFEf1t5aoMouuQ==',1,'User','USER2','User2@12345','OFF','on','on','','','2024-04-17 10:37:01'),(3,'rnXISJN6sIxR4zR7uMUOlA==','KD2pjm85xY0=','MoeZznMF+8g=','T8uFqecbePP74G1nq1+/1g==','RC8Uz2ijCfzhmEtUWlv6Hg==','H+Mrj6NXGS8bHz7GGsn70A==',1,'Admin','USER3','User3@12345','OFF','on','on','on','on','2024-04-17 10:37:01'),(4,'hv6bRIo6dg2REa7ZovbA0Q==','','XHJs2Ory9QM=','9R6qXVt99LHiLvc=','€<‘}_7r\0^9—Å˜Õ','VC0b/yisuRIvoMiMFOULGg==',1,'Admin','USER4','User4@12345','OFF','','on','on','','2024-04-17 10:37:01'),(5,'8mN8CSURPJZxropve0HoJA==','','iVM5iuF/teI=','9R6qXVp99LHiLvc=','€«V&þëj)ÎTe®','SM6D+gCOGmEvoMiMFOULGg==',1,'Admin','USER5','User5@12345','OFF','on','on','on','on','2024-04-17 10:37:01'),(6,'zl5cxwShn41JVKZrLEibVw==','','rElCH/DTxKc=','9R6qXVl99LHiLvc=','€±c¢`KÈrYó€ó¦ ','0rPbY6iXAoovoMiMFOULGg==',1,'Admin','USER6','User6@12345','OFF','on','on','on','on','2024-04-17 10:37:01'),(7,'0Vd5oH/pehlPCBCMgfTFgw==','','5r3A1DRgpe0=','9R6qXVh99LHiLvc=','€þ\'Ÿ%l“†â!,Éh','x/WqepJ2rTgvoMiMFOULGg==',0,'User','USER7','User7@12345','OFF','on','on','on','on','2024-04-17 10:37:01'),(8,'VHl8o5oac01YTAGP3+E/iw==','','HcyYLKHkWb4=','1R6qXVd99LHi','€jH…l°\\ŸÄB:Å+\ZZù','lAt8jMGtZ4+m9Lgzn1jgrQ==',0,'Admin','USER8','user8@123','OFF','on','on','','on','2024-04-17 10:37:01'),(9,'jYyZLBNlFBn4yM4rSm0tmw==','','Q4x8RqW7SzQ=','9R6qXVZ99LHiLvc=','€HÐŸŒAyR*Âó0õÿ ¯','l9CLCe6BLewvoMiMFOULGg==',1,'Admin','USER9','User9@12345','OFF','on','on','on','on','2024-04-17 10:37:01'),(10,'em7Yt4l8RLimUf47Iy47iQ==','','qfbFKKQJwT8=','9R6qXV4NhbLjKfb4','€,°ú$¥¤…»µÜñÀ<˜s','0EenkO+4Y3sdRR/o1qzTUw==',0,'User','USER10','User10@12345','OFF','on','on','on','on','2024-04-17 10:37:01'),(11,'iTWsyHOuabdXSmw3VV6+KQ==','','+uoS9mJcrUc=','9R6qXV4MhbLjKfb4','€×¨WÝmÙDÚ?íÂë','FL8AEWyZV5kdRR/o1qzTUw==',1,'Admin','USER11','User11@12345','OFF','on','on','on','on','2024-04-17 10:37:01'),(12,'b3h5zZKv5ty5EOJ7VrS/3A==','mGJS28SDy0M=','Hd/IujyJ23Y=','9R6qXV4PhbLjKfb4','€Ž©¤Fzø²¬âÛ½¦gA','scb5ysudtC8dRR/o1qzTUw==',0,'User','USER12','User12@12345','OFF','on','on','','','2024-04-17 10:37:01'),(13,'bkmXn8ipMpBpX0o9rDkJTA==','','iKKpkXrSpvs=','1R6qXV4OhbLjKQ==','€Þ-­Á=V\0úÿ\ZÊ°q','EyAkLYC+Hyesw7aZymrFqg==',0,'User','USER13','user13@123','OFF','on','on','on','on','2024-04-17 10:37:01'),(14,'UK589/JSYa15wyRNQoTxlQ==','','YOSyd1zqcgM=','9R6qXV4JhbLjKfb4','€ö&¦\Zºá²hÑi^bb~','mEdxVLqpfc8dRR/o1qzTUw==',1,'User','USER14','User14@12345','OFF','on','on','','','2024-04-17 10:37:01'),(15,'UqANM2nlW4HcMegvDbnMCQ==','','wAhsYanANuY=','9R6qXV4IhbLjKfb4','€/M[‘\ZìrÑÛœ”>Ñô{','Y+AJBeAD2AsdRR/o1qzTUw==',1,'Admin','USER15','User15@12345','OFF','on','on','','on','2024-04-17 10:37:01'),(16,'pXbAamDck7wy18zYInD0KA==','','hlDIInESIF8=','9R6qXV4LhbLjKfb4','€æ„rÍ·Û÷÷$ûþô‰B','Ov3dbwnbes4dRR/o1qzTUw==',1,'Admin','USER16','User16@12345','OFF','on','on','','on','2024-04-17 10:37:01');
+/*!40000 ALTER TABLE `username` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `waiting_list`
+--
+
+DROP TABLE IF EXISTS `waiting_list`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `waiting_list` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int DEFAULT NULL,
+  `login_time` timestamp NULL DEFAULT NULL,
+  `served` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `waiting_list`
+--
+
+LOCK TABLES `waiting_list` WRITE;
+/*!40000 ALTER TABLE `waiting_list` DISABLE KEYS */;
+INSERT INTO `waiting_list` VALUES (1,9,'2024-03-04 08:40:10',0),(2,2,'2024-03-04 08:41:34',0),(3,1,'2024-03-07 10:28:02',0),(4,1,'2024-03-07 10:28:10',0),(5,2,'2024-03-07 10:28:21',0),(6,1,'2024-03-08 09:04:00',0),(7,1,'2024-03-11 06:53:51',0),(8,2,'2024-03-11 06:54:15',0),(9,2,'2024-03-11 06:54:32',0),(10,3,'2024-03-12 08:29:42',0),(11,2,'2024-03-13 09:11:23',0),(12,2,'2024-03-14 12:28:32',0),(13,16,'2024-03-14 13:51:23',0),(14,2,'2024-03-15 08:49:58',0),(15,2,'2024-03-19 07:22:46',0),(16,2,'2024-03-19 08:53:12',0),(17,2,'2024-03-19 09:03:51',0),(18,2,'2024-03-19 09:46:47',0),(19,4,'2024-03-19 09:47:00',0),(20,6,'2024-03-19 10:00:28',0),(21,5,'2024-03-20 10:34:01',0),(22,1,'2024-03-22 05:10:22',0),(23,1,'2024-04-08 07:19:18',0),(24,6,'2024-04-10 10:58:22',0),(25,5,'2024-04-11 07:02:24',0),(26,1,'2024-04-15 05:35:04',0),(27,1,'2024-04-17 10:47:21',0),(28,1,'2024-04-17 10:48:45',0),(29,1,'2024-04-17 10:49:52',0);
+/*!40000 ALTER TABLE `waiting_list` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2024-04-18  3:11:13
